@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Priority Scheduling - Operating Systems</title>
+        <title>Atomic Operations - Operating Systems</title>
         
         
 
@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../preface.html"><strong aria-hidden="true">1.</strong> Preface</a></li><li class="chapter-item expanded "><a href="../introduction.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../processes.html"><strong aria-hidden="true">3.</strong> Processes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../processes/unix.html"><strong aria-hidden="true">3.1.</strong> UNIX Processes</a></li><li class="chapter-item expanded "><a href="../processes/windows.html"><strong aria-hidden="true">3.2.</strong> Windows Processes</a></li><li class="chapter-item expanded "><a href="../processes/communication.html"><strong aria-hidden="true">3.3.</strong> Process Communication</a></li></ol></li><li class="chapter-item expanded "><a href="../threads.html"><strong aria-hidden="true">4.</strong> Threads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../threads/posix.html"><strong aria-hidden="true">4.1.</strong> PThreads (POSIX Threads)</a></li><li class="chapter-item expanded "><a href="../threads/user-kernel.html"><strong aria-hidden="true">4.2.</strong> User-Level and Kernel-Level Threads</a></li></ol></li><li class="chapter-item expanded "><a href="../scheduling.html"><strong aria-hidden="true">5.</strong> Scheduling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../scheduling/fcfs.html"><strong aria-hidden="true">5.1.</strong> First-Come First-Served</a></li><li class="chapter-item expanded "><a href="../scheduling/rr.html"><strong aria-hidden="true">5.2.</strong> Round-Robin</a></li><li class="chapter-item expanded "><a href="../scheduling/sjf-srt.html"><strong aria-hidden="true">5.3.</strong> Shortest Job First and Shortest Remaining Time</a></li><li class="chapter-item expanded "><a href="../scheduling/fs.html"><strong aria-hidden="true">5.4.</strong> Fair-Share Scheduling</a></li><li class="chapter-item expanded "><a href="../scheduling/priority.html" class="active"><strong aria-hidden="true">5.5.</strong> Priority Scheduling</a></li><li class="chapter-item expanded "><a href="../scheduling/mlfqs.html"><strong aria-hidden="true">5.6.</strong> Multilevel Feedback Queues (MLFQS)</a></li><li class="chapter-item expanded "><a href="../scheduling/lottery.html"><strong aria-hidden="true">5.7.</strong> Lottery Scheduling</a></li></ol></li><li class="chapter-item expanded "><a href="../synchronisation.html"><strong aria-hidden="true">6.</strong> Synchronisation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../synchronisation/mutual-exclusion.html"><strong aria-hidden="true">6.1.</strong> Attempts at Gaining Mutual Exclusion</a></li><li class="chapter-item expanded "><a href="../synchronisation/atomics.html"><strong aria-hidden="true">6.2.</strong> Atomic Operations</a></li><li class="chapter-item expanded "><a href="../synchronisation/locks.html"><strong aria-hidden="true">6.3.</strong> Locks</a></li><li class="chapter-item expanded "><a href="../synchronisation/race-conditions.html"><strong aria-hidden="true">6.4.</strong> Race Conditions</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../preface.html"><strong aria-hidden="true">1.</strong> Preface</a></li><li class="chapter-item expanded "><a href="../introduction.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../processes.html"><strong aria-hidden="true">3.</strong> Processes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../processes/unix.html"><strong aria-hidden="true">3.1.</strong> UNIX Processes</a></li><li class="chapter-item expanded "><a href="../processes/windows.html"><strong aria-hidden="true">3.2.</strong> Windows Processes</a></li><li class="chapter-item expanded "><a href="../processes/communication.html"><strong aria-hidden="true">3.3.</strong> Process Communication</a></li></ol></li><li class="chapter-item expanded "><a href="../threads.html"><strong aria-hidden="true">4.</strong> Threads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../threads/posix.html"><strong aria-hidden="true">4.1.</strong> PThreads (POSIX Threads)</a></li><li class="chapter-item expanded "><a href="../threads/user-kernel.html"><strong aria-hidden="true">4.2.</strong> User-Level and Kernel-Level Threads</a></li></ol></li><li class="chapter-item expanded "><a href="../scheduling.html"><strong aria-hidden="true">5.</strong> Scheduling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../scheduling/fcfs.html"><strong aria-hidden="true">5.1.</strong> First-Come First-Served</a></li><li class="chapter-item expanded "><a href="../scheduling/rr.html"><strong aria-hidden="true">5.2.</strong> Round-Robin</a></li><li class="chapter-item expanded "><a href="../scheduling/sjf-srt.html"><strong aria-hidden="true">5.3.</strong> Shortest Job First and Shortest Remaining Time</a></li><li class="chapter-item expanded "><a href="../scheduling/fs.html"><strong aria-hidden="true">5.4.</strong> Fair-Share Scheduling</a></li><li class="chapter-item expanded "><a href="../scheduling/priority.html"><strong aria-hidden="true">5.5.</strong> Priority Scheduling</a></li><li class="chapter-item expanded "><a href="../scheduling/mlfqs.html"><strong aria-hidden="true">5.6.</strong> Multilevel Feedback Queues (MLFQS)</a></li><li class="chapter-item expanded "><a href="../scheduling/lottery.html"><strong aria-hidden="true">5.7.</strong> Lottery Scheduling</a></li></ol></li><li class="chapter-item expanded "><a href="../synchronisation.html"><strong aria-hidden="true">6.</strong> Synchronisation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../synchronisation/mutual-exclusion.html"><strong aria-hidden="true">6.1.</strong> Attempts at Gaining Mutual Exclusion</a></li><li class="chapter-item expanded "><a href="../synchronisation/atomics.html" class="active"><strong aria-hidden="true">6.2.</strong> Atomic Operations</a></li><li class="chapter-item expanded "><a href="../synchronisation/locks.html"><strong aria-hidden="true">6.3.</strong> Locks</a></li><li class="chapter-item expanded "><a href="../synchronisation/race-conditions.html"><strong aria-hidden="true">6.4.</strong> Race Conditions</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -163,29 +163,33 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="priority-scheduling-preemptive"><a class="header" href="#priority-scheduling-preemptive">Priority Scheduling (Preemptive)</a></h1>
-<p>Under a priority scheduling algorithm, processes are assigned priorities. Priorities are a heuristic used to determine the importance of the workload of the process. The result is that more important workloads (e.g. user facing processes such as video games) can be executed before lower priority ones (e.g. background processes fetching data like the weather).</p>
-<p>Priorities can be externally provided (e.g. from the user), or they can be based on process-specific metrics (e.g. their expected CPU burst). Priorities can also be <strong>static</strong> (i.e. unchanging) or <strong>dynamic</strong> (i.e. changing).</p>
-<p>For example, assume there exist 3 processes that arrive at the same time:</p>
-<ul>
-<li><code>A</code>: Priority = 4</li>
-<li><code>B</code>: Priority = 7</li>
-<li><code>C</code>: Priority = 1</li>
-</ul>
-<p>In this example, higher priority values means higher priority (in practice it can be the other way round). Under these conditions, the processes would execute in the order of <code>B, A, C</code>.</p>
+                        <h1 id="atomic-operations"><a class="header" href="#atomic-operations">Atomic Operations</a></h1>
+<p>An <strong>atomic operation</strong> is a sequence of one of more statements that is / appears to be indivisible i.e. they will always be executed without any potential for interrupts in the middle of execution.</p>
+<p><strong>Warning</strong>: not every single statement is atomic. For example:</p>
+<pre><code class="language-c">void withdraw(int account_no, int amount) {
+  int balance = accounts[account_no];
+  accounts[account_no] = balance - amount;
+}
+</code></pre>
+<p>could be rewritten as:</p>
+<pre><code class="language-c">void withdraw(int account_no, int amount) {
+  accounts[account_no] -= amount;
+}
+</code></pre>
+<p>but it would <strong>not</strong> be atomic as <code>-=</code> is simply syntactic sugar for what was written before.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../scheduling/fs.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../synchronisation/mutual-exclusion.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../scheduling/mlfqs.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../synchronisation/locks.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -197,13 +201,13 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../scheduling/fs.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../synchronisation/mutual-exclusion.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="../scheduling/mlfqs.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../synchronisation/locks.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 

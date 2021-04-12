@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="preface.html"><strong aria-hidden="true">1.</strong> Preface</a></li><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="processes.html"><strong aria-hidden="true">3.</strong> Processes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="processes/unix.html"><strong aria-hidden="true">3.1.</strong> UNIX Processes</a></li><li class="chapter-item expanded "><a href="processes/windows.html"><strong aria-hidden="true">3.2.</strong> Windows Processes</a></li><li class="chapter-item expanded "><a href="processes/communication.html"><strong aria-hidden="true">3.3.</strong> Process Communication</a></li></ol></li><li class="chapter-item expanded "><a href="threads.html"><strong aria-hidden="true">4.</strong> Threads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="threads/posix.html"><strong aria-hidden="true">4.1.</strong> PThreads (POSIX Threads)</a></li><li class="chapter-item expanded "><a href="threads/user-kernel.html"><strong aria-hidden="true">4.2.</strong> User-Level and Kernel-Level Threads</a></li></ol></li><li class="chapter-item expanded "><a href="scheduling.html"><strong aria-hidden="true">5.</strong> Scheduling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="scheduling/fcfs.html"><strong aria-hidden="true">5.1.</strong> First-Come First-Served</a></li><li class="chapter-item expanded "><a href="scheduling/rr.html"><strong aria-hidden="true">5.2.</strong> Round-Robin</a></li><li class="chapter-item expanded "><a href="scheduling/sjf-srt.html"><strong aria-hidden="true">5.3.</strong> Shortest Job First and Shortest Remaining Time</a></li><li class="chapter-item expanded "><a href="scheduling/fs.html"><strong aria-hidden="true">5.4.</strong> Fair-Share Scheduling</a></li><li class="chapter-item expanded "><a href="scheduling/priority.html"><strong aria-hidden="true">5.5.</strong> Priority Scheduling</a></li><li class="chapter-item expanded "><a href="scheduling/mlfqs.html"><strong aria-hidden="true">5.6.</strong> Multilevel Feedback Queues (MLFQS)</a></li><li class="chapter-item expanded "><a href="scheduling/lottery.html"><strong aria-hidden="true">5.7.</strong> Lottery Scheduling</a></li></ol></li><li class="chapter-item expanded "><a href="synchronisation.html" class="active"><strong aria-hidden="true">6.</strong> Synchronisation</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="preface.html"><strong aria-hidden="true">1.</strong> Preface</a></li><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="processes.html"><strong aria-hidden="true">3.</strong> Processes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="processes/unix.html"><strong aria-hidden="true">3.1.</strong> UNIX Processes</a></li><li class="chapter-item expanded "><a href="processes/windows.html"><strong aria-hidden="true">3.2.</strong> Windows Processes</a></li><li class="chapter-item expanded "><a href="processes/communication.html"><strong aria-hidden="true">3.3.</strong> Process Communication</a></li></ol></li><li class="chapter-item expanded "><a href="threads.html"><strong aria-hidden="true">4.</strong> Threads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="threads/posix.html"><strong aria-hidden="true">4.1.</strong> PThreads (POSIX Threads)</a></li><li class="chapter-item expanded "><a href="threads/user-kernel.html"><strong aria-hidden="true">4.2.</strong> User-Level and Kernel-Level Threads</a></li></ol></li><li class="chapter-item expanded "><a href="scheduling.html"><strong aria-hidden="true">5.</strong> Scheduling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="scheduling/fcfs.html"><strong aria-hidden="true">5.1.</strong> First-Come First-Served</a></li><li class="chapter-item expanded "><a href="scheduling/rr.html"><strong aria-hidden="true">5.2.</strong> Round-Robin</a></li><li class="chapter-item expanded "><a href="scheduling/sjf-srt.html"><strong aria-hidden="true">5.3.</strong> Shortest Job First and Shortest Remaining Time</a></li><li class="chapter-item expanded "><a href="scheduling/fs.html"><strong aria-hidden="true">5.4.</strong> Fair-Share Scheduling</a></li><li class="chapter-item expanded "><a href="scheduling/priority.html"><strong aria-hidden="true">5.5.</strong> Priority Scheduling</a></li><li class="chapter-item expanded "><a href="scheduling/mlfqs.html"><strong aria-hidden="true">5.6.</strong> Multilevel Feedback Queues (MLFQS)</a></li><li class="chapter-item expanded "><a href="scheduling/lottery.html"><strong aria-hidden="true">5.7.</strong> Lottery Scheduling</a></li></ol></li><li class="chapter-item expanded "><a href="synchronisation.html" class="active"><strong aria-hidden="true">6.</strong> Synchronisation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="synchronisation/mutual-exclusion.html"><strong aria-hidden="true">6.1.</strong> Attempts at Gaining Mutual Exclusion</a></li><li class="chapter-item expanded "><a href="synchronisation/atomics.html"><strong aria-hidden="true">6.2.</strong> Atomic Operations</a></li><li class="chapter-item expanded "><a href="synchronisation/locks.html"><strong aria-hidden="true">6.3.</strong> Locks</a></li><li class="chapter-item expanded "><a href="synchronisation/race-conditions.html"><strong aria-hidden="true">6.4.</strong> Race Conditions</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -186,66 +186,6 @@
 <li>no process requiring access to its critical section can be delayed forever (i.e. all processes requesting entry must be granted it at some point).</li>
 <li>no assumptions are to be made about the relative speed of processes i.e a process cannot assume that another process will exit its critical section in a given amount of time.</li>
 </ul>
-<h2 id="examples-methods-of-gaining-mutual-exclusion"><a class="header" href="#examples-methods-of-gaining-mutual-exclusion">Examples Methods of Gaining Mutual Exclusion</a></h2>
-<h3 id="disabling-interrupts"><a class="header" href="#disabling-interrupts">Disabling Interrupts</a></h3>
-<pre><code class="language-c">CLI() // clears interrupt flag (IF = 0), disabling interrupts
-STI() // set interrupt flag (IF = 1), enabling interrupts
-</code></pre>
-<p>By using <code>CLI</code> and <code>STI</code> to disable / enable interrupts, mutual exclusion can be achieved as other processes won't be able to be scheduled:</p>
-<pre><code class="language-c">int valueMap[10];
-
-// ...
-
-void safe_set_value(int index, int value) {
-  CLI();
-  valueMap[index] = value;
-  STI();
-}
-</code></pre>
-<p>There are a few issues with this method:</p>
-<ul>
-<li>it only works on single-processor systems. Other processes on other processors will still be running.</li>
-<li>misbehaving / buggy processes may not release the CPU.</li>
-</ul>
-<p>Because of this, disabling interrupts should only used by kernel code that requires the fine level of control / performance, and it should be used as little as possible in the kernel code as well.</p>
-<h3 id="strict-alternation"><a class="header" href="#strict-alternation">Strict Alternation</a></h3>
-<p>Strict alternation relies on a variable, say <code>turn</code>, to control which process can run at any moment in time. At the end of its critical section, a process will update the <code>turn</code> variable to indicate it is done.</p>
-<p>For example, assume there are two processes A and B which have an overlapping critical section:</p>
-<pre><code class="language-c">// ...
-
-char turn = 'A';
-
-void process_work_a() {
-  while (true) {
-    while (turn != 'A') {}    // empty loop to await turn
-    critical_section();       // enter critical_section
-    turn = 'B';               // leave critical_section
-    non_critical_section_a(); // non-critical section
-  }
-}
-
-void process_work_b()(void *arg) {
-  while (true) {
-    while (turn != 'B') {}
-    critical_section();
-    turn = 'A';
-    non_critical_section_b();
-  }
-}
-</code></pre>
-<p>This fixes the problem of having to turn off interrupts, but it also introduces new problems:</p>
-<ul>
-<li>if it is process A's turn, but it is in its non-critical section, it can take as long as it wants / never enter its critical section again. B will be stuck waiting for A, which breaks two rules:
-<ul>
-<li>that no process should be able to prevent another process from entering its critical section</li>
-<li>that if no process is in its critical section, and process attempting to enter its critical section should be allowed to do so immeditately.</li>
-<li>depending on the behaviour of <code>non_critical_section_a</code>, it could potentially break a third rule: that no process should be waiting to enter its critical section forever.</li>
-</ul>
-</li>
-<li>process B is unable to enter its critical section twice in a row as it is forced to wait for process A to update <code>turn</code>.</li>
-</ul>
-<h3 id="busy-waiting"><a class="header" href="#busy-waiting">Busy Waiting</a></h3>
-<p>Strict alternation uses a mechanism called <strong>busy waiting</strong>, which means a loop that constantly tests a value until it meets a certain condition. This is bad as it wastes valuable CPU time. As a result, busy waiting should only ever be used when the wait is expected to be short.</p>
 
                     </main>
 
@@ -257,6 +197,10 @@ void process_work_b()(void *arg) {
                             </a>
                         
 
+                        
+                            <a rel="next" href="synchronisation/mutual-exclusion.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -271,6 +215,10 @@ void process_work_b()(void *arg) {
                     </a>
                 
 
+                
+                    <a rel="next" href="synchronisation/mutual-exclusion.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
                 
             </nav>
 

@@ -27,7 +27,7 @@ The requirements for mutual exclusion are:
 - no process requiring access to its critical section can be delayed forever (i.e. all processes requesting entry must be granted it at some point).
 - no assumptions are to be made about the relative speed of processes i.e a process cannot assume that another process will exit its critical section in a given amount of time.
 
-## Examples Methods of Gaining Mutual Exclusion
+## Examples Methods / Mechanisms of Gaining Mutual Exclusion
 
 ### Disabling Interrupts
 
@@ -365,3 +365,20 @@ void process_work_c() {
 ```
 
 Processes A and B can safely execute at the same time. However, as soon as process C acquires the lock in write mode, processes A and B will be blocked until C completes it's workload.
+
+## Race Conditions
+
+A **race condition** occurs when any two processes read and write shared data without the protection of any synchronisation mechanism. The result depends on the execution order of each process (e.g. their exact interleaving).
+
+### Thread Interleavings
+
+The **thread interleavings** of two or more threads is the total set of all possible orderings of their statement execution.
+
+For example, two threads A and B with statements `{A1; A2}` and `{B1; B2}` respectively have thread interleavings:
+
+- `A1 -> A2 -> B1 -> B2`
+- `A1 -> B1 -> A2 -> B2`
+- `A1 -> B1 -> B2 -> A2`
+- `B1 -> B2 -> A1 -> A2`
+- `B1 -> A1 -> B2 -> A2`
+- `B1 -> A1 -> A2 -> B2`

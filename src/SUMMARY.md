@@ -18,3 +18,7 @@
   - [Multilevel Feedback Queues (MLFQS)](./scheduling/mlfqs.md)
   - [Lottery Scheduling](./scheduling/lottery.md)
 - [Synchronisation](./synchronisation.md)
+  - [Attempts at Gaining Mutual Exclusion](./synchronisation/mutual-exclusion.md)
+  - [Atomic Operations](./synchronisation/atomics.md)
+  - [Locks](./synchronisation/locks.md)
+  - [Race Conditions](./synchronisation/race-conditions.md)

@@ -145,3 +145,100 @@ Using this example, here is a proof of the mutual exclusion:
 - If `turn = 1` the opposite will happen, where process 1 will enter the critical section before process 0.
 
 One major downside to Peterson's solution is that it still uses busy waiting.
+
+### Atomic Operations
+
+An **atomic operation** is a sequence of one of more statements that is / appears to be indivisible i.e. they will always be executed without any potential for interrupts in the middle of execution.
+
+**Warning**: not every single statement is atomic. For example:
+
+```c
+void withdraw(int account_no, int amount) {
+  int balance = accounts[account_no];
+  accounts[account_no] = balance - amount;
+}
+```
+
+could be rewritten as:
+
+```c
+void withdraw(int account_no, int amount) {
+  accounts[account_no] -= amount;
+}
+```
+
+but it would **not** be atomic as `-=` is simply syntactic sugar for what was written before.
+
+### Locks / Mutexes
+
+A **lock** (also known as **mutex**) is a piece of data that restricts access to a certain resource. A process can:
+
+- "acquire" a lock, preventing any other process from accessing the data associated with the lock.
+- "release" it, allowing the next process to acquire it.
+
+Locks are purely symbolic as nothing forces a process to acquire a lock before accessing the protected data.
+
+An example of how we would use these locks would be:
+
+```c 
+int *accounts;
+lock_t accounts_lock; // a lock of some type lock_t
+
+void withdraw(int account_no, int amount) {
+  acquire(accounts_lock);
+
+  int balance = accounts[account_no];
+  accounts[account_no] = balance - amount;
+
+  release(accounts_lock);
+}
+```
+
+One attempt at implementing `acquire` and `release` is:
+
+```c
+// here lock_t is replaces with *int
+
+void acquire(*int lock) {
+  while (*lock != 0) {}
+  *lock = 1;
+}
+
+void release(*int lock) {
+  *lock = 0;
+}
+```
+
+but this has the issue that the two instructions in `acquire` (the `while` loop and the assignment) are **not** atomic. This means that two or more processes could read at the same time that a lock is free and attempt to acquire it.
+
+How this is resolved is in the hardware of the CPU. A test-and-set instruction is provided, which can atomically test the value of lock and can set it if it is released. Most CPUs have this instruction.
+
+Revisiting the previous example, `acquire` can be reimplemented using a new function called `TSL`, whichs returns `1` if it acquires the lock, and `0` otherwise:
+
+```c
+void acquire(*int lock) {
+  while (TSL(lock) != 0) {}
+}
+```
+
+This implementation is known as a **spin lock**.
+
+### Spin Locks
+
+Spin locks are locks that use busy waiting whilst waiting for the lock to release. They:
+
+- waste CPU time from busy waiting, but are useful then the wait is expected to be short as they can be faster than alternative implementations (more on this later).
+- may run into the priority inversion problem.
+
+### Priority Inversion Problem
+
+The priority inversion problem is a scenario where a high priority process is indirectly preempted by a lower priority process.
+
+For example, assume there are two processes H and L with high and low priorities respectively. Under normal conditions, H should be scheduled if it is runnable. However, consider the following scenario:
+
+1. H is blocked whilst waiting for I/O.
+2. L, during this time, acquires lock A.
+3. H is unblocked and is scheduled.
+4. H attempts to acquire lock A.
+
+If A is a spin lock, then H would still be scheduled as it is busy waiting and has a higher priority than L. L would never get scheduled, effectively preventing both H and L from continuing.

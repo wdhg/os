@@ -99,7 +99,7 @@ This fixes the problem of having to turn off interrupts, but it also introduces 
 
 Strict alternation uses a mechanism called **busy waiting**, which means a loop that constantly tests a value until it meets a certain condition. This is bad as it wastes valuable CPU time. As a result, busy waiting should only ever be used when the wait is expected to be short.
 
-### Peterson's Solution
+### Peterson's Solution / Algorithm
 
 Peterson's solution is similar to strict alternation, but it solves a few of its issues.
 
@@ -138,8 +138,10 @@ void process_work_1() {
 }
 ```
 
-Using this example, assume processes 0 and 1 are requesting permission to enter the critical section. Then `interested[0] = true`, `interested[1] = true`, and `turn` is now controlling which thread is able to enter the critical section.
+Using this example, here is a proof of the mutual exclusion:
 
-If `turn = 0`, process 0 will then be able to enter into the critical section. Process 1 is now waiting for process 0 to set `interested[0]` to `false` once process 0 calls `exit_critical`. Then process 1 can enter the critical section.
+- Assume processes 0 and 1 are requesting permission to enter the critical section. Then `interested[0] = true`, `interested[1] = true`, and `turn` is controlling which thread is able to enter the critical section.
+- If `turn = 0`, process 0 will then be able to enter into the critical section. Process 1 is now waiting for process 0 to set `interested[0]` to `false`, which only happens when process 0 calls `exit_critical`. Once process 0 has called `exit_critical`, then process 1 is allowed to enter the critical section.
+- If `turn = 1` the opposite will happen, where process 1 will enter the critical section before process 0.
 
-If `turn = 1` the opposite will happen, where process 1 will enter the critical section before process 0.
+One major downside to Peterson's solution is that it still uses busy waiting.

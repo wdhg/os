@@ -321,3 +321,47 @@ Different level granularity solutions have their uses, but typically as granular
 To minimise lock contention and maximise concurrency:
 - choose a finer lock granularity (but understand its tradeoffs)
 - release a lock as soon as possible (make critical sections as **small** as possible)
+
+### Read / Write Locks (RW Locks)
+
+If multiple processes are simply reading the same data, then a lock may not even be required. However, if a process begins to write to this data, then a lock is required.
+
+The solution to this are read / write locks (also known as reader-writer locks). RW locks allow for concurrent read-only access, or exclusive read and write access.
+
+For example:
+
+```c
+// ...
+
+int *accounts;
+rwlock_t accounts_lock; // for some rwlock_t type
+
+void get_balance(int account_no) {
+  aquire_read(accounts_lock);
+  int balance = accounts[account_no];
+  release(accounts_lock);
+  return balance;
+}
+
+void withdraw(int account_no, int amount) {
+  acquire_write(accounts_lock);
+  accounts[account_no] -= amount;
+  release(accounts_lock);
+}
+
+void process_work_a() {
+  int balance = get_balance(1);
+  // ...
+}
+
+void process_work_b() {
+  int balance = get_balance(2);
+  // ...
+}
+
+void process_work_c() {
+  withdraw(2, 40);
+}
+```
+
+Processes A and B can safely execute at the same time. However, as soon as process C acquires the lock in write mode, processes A and B will be blocked until C completes it's workload.

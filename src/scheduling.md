@@ -63,7 +63,7 @@ A general-purpose scheduler for an OS should use an algorithm that:
 Well-studied scheduling algorithms include:
 
 - First-Come First-Served (FCFS).
-- Round Robin (RR).
+- Round-Robin (RR).
 - Shortest Job First (SJF).
 - Shortest Remaining Time (SRT).
 - Multilevel Feedback Queues (MLFQS).

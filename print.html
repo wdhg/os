@@ -1,0 +1,1119 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Operating Systems</title>
+        
+        <meta name="robots" content="noindex" />
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        
+        <link rel="stylesheet" href="css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="processes.html"><strong aria-hidden="true">2.</strong> Processes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="processes/unix.html"><strong aria-hidden="true">2.1.</strong> UNIX Processes</a></li><li class="chapter-item expanded "><a href="processes/windows.html"><strong aria-hidden="true">2.2.</strong> Windows Processes</a></li><li class="chapter-item expanded "><a href="processes/communication.html"><strong aria-hidden="true">2.3.</strong> Process Communication</a></li></ol></li><li class="chapter-item expanded "><a href="threads.html"><strong aria-hidden="true">3.</strong> Threads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="threads/posix.html"><strong aria-hidden="true">3.1.</strong> PThreads (POSIX Threads)</a></li><li class="chapter-item expanded "><a href="threads/user-kernel.html"><strong aria-hidden="true">3.2.</strong> User-Level and Kernel-Level Threads</a></li></ol></li><li class="chapter-item expanded "><a href="scheduling.html"><strong aria-hidden="true">4.</strong> Scheduling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="scheduling/fcfs.html"><strong aria-hidden="true">4.1.</strong> First-Come First-Served</a></li><li class="chapter-item expanded "><a href="scheduling/rr.html"><strong aria-hidden="true">4.2.</strong> Round-Robin</a></li><li class="chapter-item expanded "><a href="scheduling/sjf-srt.html"><strong aria-hidden="true">4.3.</strong> Shortest Job First and Shortest Remaining Time</a></li><li class="chapter-item expanded "><a href="scheduling/fs.html"><strong aria-hidden="true">4.4.</strong> Fair-Share Scheduling</a></li><li class="chapter-item expanded "><a href="scheduling/priority.html"><strong aria-hidden="true">4.5.</strong> Priority Scheduling</a></li><li class="chapter-item expanded "><a href="scheduling/mlfqs.html"><strong aria-hidden="true">4.6.</strong> Multilevel Feedback Queues (MLFQS)</a></li><li class="chapter-item expanded "><a href="scheduling/lottery.html"><strong aria-hidden="true">4.7.</strong> Lottery Scheduling</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Operating Systems</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<h2 id="computer-architecture-overview"><a class="header" href="#computer-architecture-overview">Computer Architecture Overview</a></h2>
+<h3 id="processor"><a class="header" href="#processor">Processor</a></h3>
+<ul>
+<li>Controls computer hardware</li>
+<li>Executes instructions that constitute programs</li>
+</ul>
+<h3 id="memory"><a class="header" href="#memory">Memory</a></h3>
+<ul>
+<li>Stores data and code</li>
+</ul>
+<h3 id="io-components"><a class="header" href="#io-components">I/O components</a></h3>
+<ul>
+<li>Read and write from</li>
+</ul>
+<h3 id="io-devices"><a class="header" href="#io-devices">I/O devices</a></h3>
+<ul>
+<li>Intelligence exists in (HW) I/O controller</li>
+</ul>
+<h3 id="system-bus"><a class="header" href="#system-bus">System bus</a></h3>
+<ul>
+<li>Interconnects different hardware components</li>
+<li>Provides communication facility between components</li>
+</ul>
+<h2 id="operating-systems-top-and-bottom-level-view"><a class="header" href="#operating-systems-top-and-bottom-level-view">Operating Systems: Top and Bottom Level View</a></h2>
+<p>Operating Systems provide a &quot;clean&quot; interface to user applications. This is to abstract the &quot;ugly&quot; interface of the hardware devices, allowing for applications to be more portable as they don't need to be concerned with all possible combinations of hardware.</p>
+<h2 id="kernels"><a class="header" href="#kernels">Kernels</a></h2>
+<p>Kernels are a part of an OS that:</p>
+<ul>
+<li>Is always loaded in memory.</li>
+<li>Executes in a privaleged mode with access to all hardware.</li>
+</ul>
+<h2 id="operating-system-goals"><a class="header" href="#operating-system-goals">Operating System Goals</a></h2>
+<h3 id="managing-resources"><a class="header" href="#managing-resources">Managing Resources</a></h3>
+<p>An OS must efficiently use it's available resources as they are limited, and it must be capible of sharing its resources among users.</p>
+<p>These resources are:</p>
+<ul>
+<li><strong>Processors</strong> (CPU cores, multi-socket CPU, SMT/hyper-threading)</li>
+<li><strong>Memory</strong> (caches, RAM, etc)</li>
+<li><strong>I/O Devices</strong> (displays, GPUs, network interface cards (NICs), printers, etc.)</li>
+<li><strong>Internal Devices</strong> (clocks, timers, interrupt controllers, etc)</li>
+<li><strong>Non-volatile Storage</strong> (disks, SSDs, DVDs, tapes, etc)</li>
+</ul>
+<h3 id="providing-clean-interfaces"><a class="header" href="#providing-clean-interfaces">Providing Clean Interfaces</a></h3>
+<p>An OS must hide the complexity of lower level hardware from higher level systems. This is done by hiding the low level hardware details from programs, and by providing higher level abstractions that user programs can use to request to access to hardware resources.</p>
+<h2 id="operating-system-characteristics"><a class="header" href="#operating-system-characteristics">Operating System Characteristics</a></h2>
+<h3 id="sharing"><a class="header" href="#sharing">Sharing</a></h3>
+<p>An OS must:</p>
+<ul>
+<li>be able to share data, programs, and hardware. This is done by using time and space multiplexing.</li>
+<li>offer resource allocation. It must:
+<ul>
+<li>ensure efficient and fair usage of memory, CPU time, disk space, etc.</li>
+<li>offer mutual exclusion for some resources (unsafe operations must be protected).</li>
+<li>protect against corruption of data, whether accidental or malicious.</li>
+</ul>
+</li>
+</ul>
+<h3 id="concurrency"><a class="header" href="#concurrency">Concurrency</a></h3>
+<p>An OS must:</p>
+<ul>
+<li>support running multiple activities in parallel (I/O and computation, multiple user programs, etc.)</li>
+<li>be capible of switching activities at arbitrary moments in time. It must guarantee fairness such that every activity can / will have CPU time, and it must ensure prompt replies to important activities.</li>
+<li>guarantee safe concurrency. This includes:
+<ul>
+<li>offering primitive structures (such as mutexs) to allow for the synchronisation of actions.</li>
+<li>protecting from user / process interference. Programs should have their own &quot;space&quot; that no other program can read from / write to accidentally / maliciously.</li>
+</ul>
+</li>
+</ul>
+<h3 id="non-determinism"><a class="header" href="#non-determinism">Non-determinism</a></h3>
+<p>Events occur in a random and unpredictable order. An OS must be capible of handling this without failure.</p>
+<h3 id="storing-data"><a class="header" href="#storing-data">Storing Data</a></h3>
+<p>An OS must:</p>
+<ul>
+<li>offer easy access to files through user-defined names. This is done my managing directory structures, links, and shared disks.</li>
+<li>enforce access controls on data, including reading, writing, removing, executing, and copying permissions.</li>
+<li>protect against unforseen failures (e.g. by making backups).</li>
+<li>manage storage devices by organising disks into volumes, partitions, redundant arrays, etc.</li>
+</ul>
+<h2 id="operating-system-facilities"><a class="header" href="#operating-system-facilities">Operating System Facilities</a></h2>
+<ul>
+<li><strong>Simplified I/O</strong> (e.g. access to disks, DVDs or remote file servers)</li>
+<li><strong>Virtual Memory</strong> (to seperate the user logical memory from physcial memory)</li>
+<li><strong>File Systems</strong> (long term storage on disk accessed by names)</li>
+<li><strong>Program Interaction and Communication</strong> (e.g. messages, pipes, sockets, shared memory)</li>
+<li><strong>Network Communication</strong> (sending / receiving data on a network)</li>
+<li><strong>Security</strong> (prevents programs from accessing resources not allocated to them)</li>
+<li><strong>Human-computer Interface</strong> (user interaction with programs, command language, shells)</li>
+<li><strong>Administration, Management, and Accounting</strong></li>
+</ul>
+<h2 id="types-of-operating-systems"><a class="header" href="#types-of-operating-systems">Types of Operating Systems</a></h2>
+<ul>
+<li><strong>Multiprocessor</strong> (Windows, MacOS, Linux)
+<ul>
+<li>Many CPU cores and CPUs.</li>
+</ul>
+</li>
+<li><strong>Server OS</strong> (Solaris, FreeBSD, Linux, Windows Server)
+<ul>
+<li>Share hardware / software resources e.g. internet servers.</li>
+</ul>
+</li>
+<li><strong>Mainframes, Supercomputers</strong> (OS/390)
+<ul>
+<li>Bespoke hardware, limited workloads.</li>
+</ul>
+</li>
+<li><strong>Smartphone</strong> (iOS, Android).
+<ul>
+<li>Power-efficient CPUs.</li>
+</ul>
+</li>
+<li><strong>Embedded OS</strong> (QNX, VXWorks)
+<ul>
+<li>Home utilities.</li>
+<li>Only trusted software.</li>
+</ul>
+</li>
+<li><strong>Real-time OS</strong>
+<ul>
+<li>Time oriented (not performance or I/O).</li>
+<li>e.g. controlling a manufacturing plant.</li>
+</ul>
+</li>
+<li><strong>Sensor Network OS</strong> (TinyOS)
+<ul>
+<li>Resource / energy efficient.</li>
+</ul>
+</li>
+</ul>
+<h2 id="operating-system-structures"><a class="header" href="#operating-system-structures">Operating System Structures</a></h2>
+<h3 id="monolithic-kernels"><a class="header" href="#monolithic-kernels">Monolithic kernels</a></h3>
+<p>A single executable with its own address space, acting as a single black box. Their structure is implied through pushing parameters to the stack and trapping to execture system calls. These are the most popular style of kernel.</p>
+<p>Advantages:</p>
+<ul>
+<li>Efficient calls within kernel.</li>
+<li>Easier to write kernel components due to shared memory.</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>Complex design with lots of interactions.</li>
+<li>No protection between kernel components. If one part crashes the whole program crashes (less reliable).</li>
+</ul>
+<h3 id="microkernels"><a class="header" href="#microkernels">Microkernels</a></h3>
+<p>Small sized kernels that have functionality in user-level servers. They use inter-process communication (IPC) between servers, and have separate servers for device I/O, file access, process scheduling, etc.</p>
+<p>Advantages:</p>
+<ul>
+<li>Kernel is less complex so less error-prone.</li>
+<li>Servers can have clean interfaces.</li>
+<li>If a server crashes, it can be restarted without crashing the entire kernel (more reliable).</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>Large amount of overhead from IPC within kernel.</li>
+</ul>
+<h3 id="hybrid-kernels"><a class="header" href="#hybrid-kernels">Hybrid Kernels</a></h3>
+<p>Combines features from both monolithic and microkernels. They are a compromise between clean design and performance overhead.</p>
+<p>Advantages:</p>
+<ul>
+<li>More structured design.</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>Performance penalty for user-level servers.</li>
+</ul>
+<h2 id="example-kernels"><a class="header" href="#example-kernels">Example Kernels</a></h2>
+<h3 id="linux-monolithic"><a class="header" href="#linux-monolithic">Linux (monolithic)</a></h3>
+<p>Linux system calls are implemented by pushing arguments into registers or the stack and issuing traps to switch from a user context to a kernel one.</p>
+<p>Linux supports a rich set of programs (through GNU project). This includes:</p>
+<ul>
+<li>shells (bash, ksh, zsh, etc), compilers, editors, etc.</li>
+<li>desktop environments (GNOME, KDE, i3).</li>
+<li>Utility programs (file, fitlers, editors, compilers, text processors, sys admin, etc).</li>
+</ul>
+<p>Interupt handles are the primary means to interact with devices. They stop the current process, save the current state, starts the driver, then returns to the saved state. They are typically written in assembler as they need to be as fast as possible.</p>
+<p>The I/O scheduler orders disk operations.</p>
+<p>Linux also supports static in-kernel components and dynamically loadable modules.</p>
+<h3 id="windows-hybrid"><a class="header" href="#windows-hybrid">Windows (hybrid)</a></h3>
+<p>The Windows NT kernel consists of two layers:</p>
+<ul>
+<li><strong>Executive</strong>: most services.</li>
+<li><strong>Kernel</strong>: thread scheduling and synchronisation, traps, interrupt handlers, and CPU management.</li>
+</ul>
+<p>Programs are built on top of dynamic code libraries (DLLs), and DLLs implement the OS services in a modular fashion.</p>
+<p>NTOS provides system calls. It is loaded from ntoskrnl.exe at boot.</p>
+<p>Hardware Abstraction Layer (HAL) abstracts out DMA operations, BIOS config, CPU types.</p>
+<p>Device drivers are loaded into kernel memory and are dynamically linked against NTOS and HAL layers.</p>
+<h1 id="processes"><a class="header" href="#processes">Processes</a></h1>
+<p>A process is an instance of a program being executed (a running program). They allow for a single processor to run multiple programs &quot;simulatneously&quot;. Each process runs on a virtual CPU, and the real CPU can use this to run any single process. Effectively, the single CPU has been divided into multiple virtual CPUs.</p>
+<h2 id="why-have-processes"><a class="header" href="#why-have-processes">Why have Processes?</a></h2>
+<p>They:</p>
+<ul>
+<li>provide an illusion of concurrency (more on this later).</li>
+<li>provide isolation between programs (each process has its own address space).</li>
+<li>simplify programming (programs don't have to worry about other programs).</li>
+<li>allow for better utilisation of resources (different processes require different resources at certain times).</li>
+</ul>
+<h2 id="time-slicing-for-concurrency"><a class="header" href="#time-slicing-for-concurrency">Time-Slicing for Concurrency</a></h2>
+<p>An OS can switch the current running process every few milliseconds such that every process can have CPU time. This is done using a CPU scheduler, and it can be used to provide pseudo concurrency.</p>
+<h2 id="types-of-concurrency"><a class="header" href="#types-of-concurrency">Types of Concurrency</a></h2>
+<ul>
+<li><strong>Pseudo Concurrency</strong>: a single processor switches between processes by interleaving their runtimes. Overtime this can give the illusion of concurrent execution.</li>
+<li><strong>Real Concurrency</strong>: multiple processors or CPU cores are used to run multiple processes in parallel.</li>
+</ul>
+<h2 id="fairness"><a class="header" href="#fairness">Fairness</a></h2>
+<p>Fairness is the concept that the CPU scheduler switches fairly between processes. This means that every process should have equal CPU time, or more generally they should have appropriate CPU times determined by each processes priority and workload.</p>
+<h2 id="context-switches"><a class="header" href="#context-switches">Context Switches</a></h2>
+<p>A context switch is when a processor switches from executing one process to another.</p>
+<p>An OS may switch either periodically or in reponse to certain events / interrupts (such as I/O completion). Context switches are not pre-determined because the events causing them are non-deterministic.</p>
+<p>Since processes will need to be restarted safely when being switched to, all relevant information (e.g. register values) must be stored when they are switched away from. This is done by storing the data in a process descriptor or a process control block (PCB), which is kept inside a process table.</p>
+<p>Context switches are expensive. The process state needs to be saved / restored and CPU caches (including translation lookaside buffer (TLB)) will be lost. It is important for an OS to avoid unnecessary context switches.</p>
+<h2 id="process-control-block-pcb"><a class="header" href="#process-control-block-pcb">Process Control Block (PCB)</a></h2>
+<p>Each process has it's own virtual machine: They have their own virtual CPU, address space (stack, heap, text, data, etc), open file descriptors, etc. Enough data must be stored such that all of this remains preserved after a context switch.</p>
+<p>The information that gets stored on a context switch is:</p>
+<ul>
+<li><strong>Registers</strong>: program counter (PC), page table register, stack pointer, etc.</li>
+<li><strong>Process management info</strong>: process ID (PID), parent process, process group, priority, CPU used, etc.</li>
+<li><strong>File management info</strong>: root directory, working directory, open file descriptors, etc.</li>
+</ul>
+<h2 id="process-creation"><a class="header" href="#process-creation">Process Creation</a></h2>
+<p>There are two types of processes:</p>
+<ul>
+<li><strong>Foreground</strong>: processes that interact with users.</li>
+<li><strong>Background</strong>: daemons (e.g. handling incoming mail, printing requests, etc).</li>
+</ul>
+<p>Processes are created on:</p>
+<ul>
+<li>system initialisation.</li>
+<li>user request.</li>
+<li>system calls by a running process.</li>
+</ul>
+<p>Processes terminated can be caused by:</p>
+<ul>
+<li><strong>Normal Completion</strong>: when the process completes the execution of its body.</li>
+<li><strong>System Calls</strong>: e.g. <code>exit()</code> in UNIX, <code>ExitProcess()</code> in Windows.</li>
+<li><strong>Abnormal Exit</strong>: when the process runs into an error or unhandled exception.</li>
+<li><strong>Aborted</strong>: when another process overrules its execution (e.g. killed from terminall).</li>
+<li><strong>Never</strong>: some processes run in an endless loop and never terminate unless an error occurs (e.g. most web servers).</li>
+</ul>
+<h2 id="process-hierarchies"><a class="header" href="#process-hierarchies">Process Hierarchies</a></h2>
+<p>UNIX allows for processes to form hierarchies (e.g. parent, child, child's child, etc).</p>
+<p>Windows has no notion of process hierarchy. Instead when a process is created its parent is given a handle token to control it. This handle can be passed around to other processes.</p>
+<h1 id="unix-processes"><a class="header" href="#unix-processes">UNIX Processes</a></h1>
+<h2 id="creating-processes"><a class="header" href="#creating-processes">Creating Processes</a></h2>
+<pre><code class="language-c">int fork(void)
+</code></pre>
+<p><code>fork</code> creates a new child process by making an exact copy of the parent process image. The child process inherits its parent's resources and will begin to execute concurrently with it.</p>
+<p><code>fork</code> returns twice, once in the parent, and once in the child:</p>
+<ul>
+<li><strong>Parent</strong>: return value is the process ID of the child.</li>
+<li><strong>Child</strong>: return value is <code>0</code>.</li>
+<li><strong>Error</strong>: if fork is unable to create a child, <code>-1</code> is returned to the parent. This can happen if there isn't enough memory to create the child process in.</li>
+</ul>
+<p>An example of some code using <code>fork</code>:</p>
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+#include &lt;stdio.h&gt;
+
+int main() {
+  if (fork() != 0) {
+    printf(&quot;Parent process\n&quot;);
+  } else {
+    printf(&quot;Child process\n&quot;);
+  }
+
+  printf(&quot;Common code\n&quot;);
+}
+</code></pre>
+<h2 id="executing-processes"><a class="header" href="#executing-processes">Executing Processes</a></h2>
+<pre><code class="language-c">int execve(
+  const char *path,
+  char *const argv[],
+  char *const envp[]
+)
+</code></pre>
+<p><code>execve</code> executes a command. Instead of copying the parent process, a completely new process is made.</p>
+<p>Its arguments are:</p>
+<ul>
+<li><code>path</code>: the full pathname of the program to be executed.</li>
+<li><code>argv</code>: the arguments passed to this program.</li>
+<li><code>envp</code>: a list of environment variables.</li>
+</ul>
+<p><code>execve</code> has many useful wrappers (<code>execl</code>, <code>execle</code>, <code>execvp</code>, <code>execv</code>, etc). Read <code>man execve</code> for more.</p>
+<h2 id="waiting-for-process-termination"><a class="header" href="#waiting-for-process-termination">Waiting for Process Termination</a></h2>
+<pre><code class="language-c">int waitpid(
+  int pid,
+  int* stat,
+  int options
+)
+</code></pre>
+<p><code>waitpid</code> suspends execution of the calling process until the child process with the PID terminates normally or it receives a signal.</p>
+<p><code>waitpid</code> can be used to wait for multiple children:</p>
+<ul>
+<li><code>pid = -1</code>: wait for any child.</li>
+<li><code>pid = 0</code> wait for any child in the same process group as caller.</li>
+<li><code>pid = -gid</code> wait for any child with process group <code>gid</code>.</li>
+</ul>
+<p>Its return value can be:</p>
+<ul>
+<li>the <code>pid</code> of the terminated child process.</li>
+<li><code>0</code> if <code>WNOHANG</code> is set in options. This option &quot;is used to indicate that the call should not block if there are no processes that wish to report status&quot; (from <code>man waitpid</code>).</li>
+<li><code>-1</code> on error, and <code>errno</code> is set to indicate the error (see <code>man errno</code>).</li>
+</ul>
+<h2 id="process-termination"><a class="header" href="#process-termination">Process Termination</a></h2>
+<pre><code class="language-c">void exit(int status)
+</code></pre>
+<p><code>exit</code> terminates the calling process, returning the exit <code>status</code> to the parent process (i.e. through <code>int *stat</code> in <code>waitpid</code>).</p>
+<pre><code class="language-c">void kill(int pid, int sid)
+</code></pre>
+<p><code>kill</code> sends signal <code>sig</code> to process with PID <code>pid</code>.</p>
+<p>An example of <code>exit</code>:</p>
+<pre><code class="language-c">#include &lt;unistd.h&gt;
+#include &lt;sys/wait.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+  int pid = fork();
+
+  if (pid != 0) {
+    // parent process
+    int *stat;
+    waitpid(pid, stat, 0);
+    printf(&quot;Child exit status is: %d\n&quot;, WEXITSTATUS(*stat));
+  } else {
+    // child process
+    exit(4);
+  }
+}
+</code></pre>
+<pre><code>$ gcc a.c &amp;&amp; ./a.out
+Child exit status is: 4
+</code></pre>
+<h1 id="windows-processes"><a class="header" href="#windows-processes">Windows Processes</a></h1>
+<p>Windows use <code>CreateProcess</code>, which is the equivalent of the UNIX <code>fork</code> and <code>execve</code>. <code>CreateProcess</code> is an alias of <code>CreateProcessA</code>:</p>
+<pre><code class="language-c++">BOOL CreateProcessA(
+  LPCSTR                lpApplicationName,
+  LPSTR                 lpCommandLine,
+  LPSECURITY_ATTRIBUTES lpProcessAttributes,
+  LPSECURITY_ATTRIBUTES lpThreadAttributes,
+  BOOL                  bInheritHandles,
+  DWORD                 dwCreationFlags,
+  LPVOID                lpEnvironment,
+  LPCSTR                lpCurrentDirectory,
+  LPSTARTUPINFOA        lpStartupInfo,
+  LPPROCESS_INFORMATION lpProcessInformation
+);
+</code></pre>
+<p><a href="https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createprocessa">Source</a></p>
+<h1 id="process-communication"><a class="header" href="#process-communication">Process Communication</a></h1>
+<p>Processes can communicate via a variety of ways:</p>
+<ul>
+<li>Files.</li>
+<li>Signals (UNIX).</li>
+<li>Events, Exceptions (Windows).</li>
+<li>Pipes.</li>
+<li>Message Queues (UNIX).</li>
+<li>Mailslots (Windows).</li>
+<li>Sockets.</li>
+<li>Shared memory.</li>
+<li>Semaphores.</li>
+</ul>
+<p>This chapter will focus on UNIX process communication.</p>
+<h2 id="unix-signals"><a class="header" href="#unix-signals">UNIX Signals</a></h2>
+<p>Signals are a Inter-Process Communication (IPC) mechanism. They are used to notify a process when an event has occured. Signal delivery is similar to the delivery of hardware interrupts.</p>
+<p>A proceess can only send signals to another process if it has the correct permissions to do so:</p>
+<ul>
+<li>The real or effective user ID of the receiving process must match that of the sending process, or the user must have the appropriate privileges.</li>
+<li>The kernel can send signals to any process.</li>
+</ul>
+<p>Signals are generated:</p>
+<ul>
+<li>when an exeception occurs (e.g. division by zero = <code>SIGFPE</code>, segment violation = <code>SIGSEGV</code>).</li>
+<li>when the kernel wants to notify the process of an event that has occured (e.g. if the process writes to a closed pipe = <code>SIGPIPE</code>).</li>
+<li>when the user enters certain key combinations (e.g. CTRL+C = <code>SIGINT</code>).</li>
+<li>when using the <code>kill</code> system call.</li>
+</ul>
+<p>All of the UNIX signals are as follows (from <code>man signal</code>):</p>
+<ol>
+<li><code>SIGHUP</code>:     terminal line hangup</li>
+<li><code>SIGINT</code>:     interrupt program</li>
+<li><code>SIGQUIT</code>:    quit program</li>
+<li><code>SIGILL</code>:     illegal instruction</li>
+<li><code>SIGTRAP</code>:    trace trap</li>
+<li><code>SIGABRT</code>:    abort program (formerly SIGIOT)</li>
+<li><code>SIGEMT</code>:     emulate instruction executed</li>
+<li><code>SIGFPE</code>:     floating-point exception</li>
+<li><code>SIGKILL</code>:    kill program</li>
+<li><code>SIGBUS</code>:     bus error</li>
+<li><code>SIGSEGV</code>:    segmentation violation</li>
+<li><code>SIGSYS</code>:     non-existent system call invoked</li>
+<li><code>SIGPIPE</code>:    write on a pipe with no reader</li>
+<li><code>SIGALRM</code>:    real-time timer expired</li>
+<li><code>SIGTERM</code>:    software termination signal</li>
+<li><code>SIGURG</code>:     urgent condition present on socket</li>
+<li><code>SIGSTOP</code>:    stop (cannot be caught or ignored)</li>
+<li><code>SIGTSTP</code>:    stop signal generated from keyboard</li>
+<li><code>SIGCONT</code>:    continue after stop</li>
+<li><code>SIGCHLD</code>:    child status has changed</li>
+<li><code>SIGTTIN</code>:    background read attempted from control terminal</li>
+<li><code>SIGTTOU</code>:    background write attempted to control terminal</li>
+<li><code>SIGIO</code>:      I/O is possible on a descriptor (see fcntl(2))</li>
+<li><code>SIGXCPU</code>:    cpu time limit exceeded (see setrlimit(2))</li>
+<li><code>SIGXFSZ</code>:    file size limit exceeded (see setrlimit(2))</li>
+<li><code>SIGVTALRM</code>:  virtual time alarm (see setitimer(2))</li>
+<li><code>SIGPROF</code>:    profiling timer alarm (see setitimer(2))</li>
+<li><code>SIGWINCH</code>:   Window size change</li>
+<li><code>SIGINFO</code>:    status request from keyboard</li>
+<li><code>SIGUSR1</code>:    User defined signal 1</li>
+<li><code>SIGUSR2</code>:    User defined signal 2</li>
+</ol>
+<p>The default action for most signals is to terminal the process, however the receiving process can choose to:</p>
+<ul>
+<li>ignore the signal.</li>
+<li>handle the signal by installing a signal handler.</li>
+</ul>
+<p>The two exceptions are <code>SIGKILL</code> and <code>SIGSTOP</code>, which cannot be ignored or handled.</p>
+<p>An example signal handler is:</p>
+<pre><code class="language-c">#include &lt;signal.h&gt;
+#include &lt;stdio.h&gt;
+
+void sigint_handler(int sig) {
+  fprintf(stderr, &quot; =&gt; SIGINT caught!\n&quot;);
+}
+
+int main(int argc, char *argv[]) {
+  signal(SIGINT, sigint_handler); // installs sigint_handler
+  while (1) {}
+}
+</code></pre>
+<pre><code>$ gcc a.c &amp;&amp; ./a.out || pkill a.out
+^C =&gt; SIGINT caught!
+^Z
+[1]  + 16252 suspended  ./a.out
+[1]  + 16252 terminated  ./a.out
+</code></pre>
+<h2 id="unix-pipes"><a class="header" href="#unix-pipes">UNIX Pipes</a></h2>
+<p>A pipe connects the standard output of one process to the standard input of another process. This allows for a one-way communication channel between processes.</p>
+<p>They are extremely useful in the command line / shell scripts:</p>
+<pre><code class="language-bash">ls | less
+ps aux | grep my_prog.out
+</code></pre>
+<p>There exist two types of pipes:</p>
+<ul>
+<li><strong>Unnamed</strong>: created, used, and destroyed within the life of the process.</li>
+<li><strong>Named (FIFOs)</strong>: persistent pipes that can outlive the process that created them. They are stored on the file system, and any process can open it like a regular file. They are more efficient than using files as they only exist in memory.</li>
+</ul>
+<h3 id="unnamed-pipes"><a class="header" href="#unnamed-pipes">Unnamed Pipes</a></h3>
+<pre><code class="language-c">int pipe(int fd[2])
+</code></pre>
+<p><code>pipe</code> returns two file descriptors:</p>
+<ul>
+<li><code>fd[0]</code>: the read end of the pipe (sender should close).</li>
+<li><code>fd[1]</code>: the write end of the pipe (receiver should close).</li>
+</ul>
+<p>If a receiver reads from an empty pipe, it blocks until data is written at the other end. If the sender writes to a full pipe, it blocks until the data is read at the other end and the pipe is cleared.</p>
+<p>An example of <code>pipe</code> is:</p>
+<pre><code class="language-c">#include &lt;assert.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;sys/wait.h&gt;
+#include &lt;string.h&gt;
+
+int main(int argc, char *argv[]) {
+  int fd[2];
+  char buf;
+
+  assert(argc == 2);
+
+  if (pipe(fd) == -1) {
+    exit(1);
+  }
+
+  if (fork() != 0) {
+    close(fd[0]);
+    write(fd[1], argv[1], strlen(argv[1]));
+    close(fd[1]);
+    waitpid(-1, NULL, 0);
+  } else {
+    close(fd[1]);
+    while(read(fd[0], &amp;buf, 1) &gt; 0) {
+      printf(&quot;%c&quot;, buf);
+    }
+    printf(&quot;\n&quot;);
+    close(fd[0]);
+  }
+}
+</code></pre>
+<pre><code>$ gcc a.c &amp;&amp; ./a.out &quot;hello world&quot;
+hello world
+</code></pre>
+<h3 id="named-pipes-fifos"><a class="header" href="#named-pipes-fifos">Named Pipes (FIFOs)</a></h3>
+<pre><code class="language-bash">NAME
+     mkfifo -- make fifos
+
+SYNOPSIS
+     mkfifo [-m mode] fifo_name ...
+</code></pre>
+<p>(from <code>man mkfifo</code>)</p>
+<p><code>mkfifo</code> allows for the creation of named pipes.</p>
+<p>An example of <code>mkfifo</code> is:</p>
+<pre><code>$ mkfifo /tmp/abc
+$ echo ABC &gt; /tmp/abc
+</code></pre>
+<pre><code>$ cat /tmp/abc
+ABC
+</code></pre>
+<h1 id="threads"><a class="header" href="#threads">Threads</a></h1>
+<p>A thread is an execution stream that share the same address space. When multithreading is used, each process can contain one or more threads.</p>
+<p>A break down of per process and per thread items is:</p>
+<p>Per process items:</p>
+<ul>
+<li>Address space.</li>
+<li>Global variables.</li>
+<li>Open files.</li>
+<li>Child processes.</li>
+<li>Signals.</li>
+</ul>
+<p>Per thread items:</p>
+<ul>
+<li>Program counter (PC).</li>
+<li>Registers.</li>
+<li>Stack.</li>
+</ul>
+<h2 id="why-threads"><a class="header" href="#why-threads">Why Threads?</a></h2>
+<p>Many applications require running multiple activities, some of which need to:</p>
+<ul>
+<li>execute in parallel.</li>
+<li>access and process the same data.</li>
+<li>potentially block.</li>
+</ul>
+<h2 id="why-not-processes"><a class="header" href="#why-not-processes">Why not Processes?</a></h2>
+<p>Threads are much lighter than processes. Processes have a lot more state associated with them (e.g. their own address spaces and other kernel state). They also:</p>
+<ul>
+<li>are difficult to communitcate between as they have different address spaces.</li>
+<li>may block, causing the entire application to be switched out.</li>
+<li>require expensive context switches as we need to change the address space that is currently visible to the executing program.</li>
+<li>are expensive to create / destroy.</li>
+</ul>
+<h2 id="problems--concerns-with-threads"><a class="header" href="#problems--concerns-with-threads">Problems / Concerns with Threads</a></h2>
+<p>Threads have a shared address space. This means that they don't have any protection from reading / writing to each others stack like processes have. This can cause memory corruption issues and other concurrency bugs due to concurrent access to shared data (e.g. through global variables).</p>
+<p>Forking inside a thread is another concern. Does the fork create a new process with the same number of threads, or with a single thread?</p>
+<p>Handling signals also becomes an issue. Which thread should handle the signal?</p>
+<h1 id="pthreads-posix-threads"><a class="header" href="#pthreads-posix-threads">PThreads (POSIX Threads)</a></h1>
+<p>PThreads are implemented by most UNIX systems, and are defined by IEEE standard 1003.1c</p>
+<pre><code class="language-c">#include &lt;pthread.h&gt;
+#include &lt;sys/types.h&gt;
+
+pthread_t      // type representing a thread
+pthread_attr_t // type representing the attributes of a thread
+</code></pre>
+<h2 id="creating-threads"><a class="header" href="#creating-threads">Creating Threads</a></h2>
+<pre><code class="language-c">int pthread_create(
+  pthread_t *thread,
+  const pthread_attr_t *attr,
+  void *(*start_routine) (void*),
+  void *arg
+)
+</code></pre>
+<p><code>pthread_create</code> creates a new thread, stored in <code>*thread</code>. The function returns:</p>
+<ul>
+<li><code>0</code> if a the thread was successfully created.</li>
+<li>an error code otherwise.</li>
+</ul>
+<p>It arguments are:</p>
+<ul>
+<li><code>*thread</code>: the variable to store the thread in.</li>
+<li><code>*attr</code>: specifies the thread attributes (e.g. minimum stack size, guard size, detached / joinable, etc). Can be <code>NULL</code> for default attributes.</li>
+<li><code>*start_routine</code>: the C function the thread will start executing upon creation.</li>
+<li><code>*arg</code>: argument to be passed to the <code>start_routine</code>. Can be <code>NULL</code> if no arguments are needed.</li>
+</ul>
+<h2 id="terminating-threads"><a class="header" href="#terminating-threads">Terminating Threads</a></h2>
+<pre><code class="language-c">void pthread_exit(void *value_ptr)
+</code></pre>
+<p><code>pthread_exit</code> terminates the calling thread and makes <code>*value_ptr</code> available to any other successful join with the terminating thread. It is called implicitly when the thread's start routine returns, except when the intial thread which started <code>main</code>.</p>
+<p>Note:</p>
+<ul>
+<li>If <code>main</code> terminates before any other threads call <code>pthread_exit</code>, the entire process is still terminated and the all threads with it.</li>
+<li>If <code>pthread_exit</code> is called in <code>main</code>, the process continues executing until the last thread is terminated (or <code>exit</code> is called).</li>
+</ul>
+<p>An example of creating and terminating pthreads is:</p>
+<pre><code class="language-c">#include &lt;pthread.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;unistd.h&gt;
+
+void *thread_work(void *thread_id) {
+  long id = (long) thread_id;
+  printf(&quot;Thread %ld\n&quot;, id);
+  return NULL;
+}
+
+int main(int argc, char *argv[]) {
+  pthread_t threads[5];
+  for (long t = 0; t &lt; 5; t++) {
+    pthread_create(&amp;threads[t], NULL, thread_work, (void *) t);
+    sleep(1);
+  }
+  return 0;
+}
+</code></pre>
+<pre><code>$ gcc a.c &amp;&amp; ./a.out
+Thread 0
+Thread 1
+Thread 2
+Thread 3
+Thread 4
+</code></pre>
+<h2 id="yielding-the-cpu"><a class="header" href="#yielding-the-cpu">Yielding the CPU</a></h2>
+<pre><code class="language-c">int pthread_yield(void)
+</code></pre>
+<p><code>pthread_yield</code> releases the CPU to let another thread run. Returns:</p>
+<ul>
+<li><code>0</code> on success.</li>
+<li>an error code otherwise.</li>
+</ul>
+<p>In linux, it always succeeds. A thread should yield if it has no need for CPU time, say it's waiting for a certain condition or event to occur.</p>
+<h2 id="joining-other-threads"><a class="header" href="#joining-other-threads">Joining Other Threads</a></h2>
+<pre><code class="language-c">int pthread_join(pthread_t thread, void **value_ptr)
+</code></pre>
+<p><code>pthread_join</code> blocks the calling thread until <code>thread</code> terminates. The <code>*value_ptr</code> passed to <code>pthead_exit</code> by the terminating thread will be stored at the joining threads <code>**value_ptr</code>. <code>**value_ptr</code> can be NULL if it is not needed.</p>
+<p>An example of joining threads is:</p>
+<pre><code class="language-c">#include &lt;pthread.h&gt;
+#include &lt;stdio.h&gt;
+
+long a, b, c;
+
+void *work1(void *x) {
+  a = (long) x * (long) x;
+  return NULL;
+}
+
+void *work2(void *y) {
+  b = (long) y * (long) y;
+  return NULL;
+}
+
+int main(int argc, char *argv[]) {
+  pthread_t t1, t2;
+
+  pthread_create(&amp;t1, NULL, work1, (void*) 3);
+  pthread_create(&amp;t2, NULL, work1, (void*) 4);
+
+  pthread_join(t1, NULL);
+  pthread_join(t2, NULL);
+
+  c = a + b;
+
+  printf(&quot;3^2 + 4^2 = %ld\n&quot;, c);
+}
+</code></pre>
+<pre><code>$ gcc a.c &amp;&amp; ./a.out
+3^2 + 4^2 = 16
+</code></pre>
+<h1 id="user-level-and-kernel-level-threads"><a class="header" href="#user-level-and-kernel-level-threads">User-Level and Kernel-Level Threads</a></h1>
+<p>There exist two main ways to implement threads:</p>
+<ul>
+<li><strong>User-Level Threads</strong>:
+<ul>
+<li>The kernel is not aware of the threads.</li>
+<li>Each process manages its own threads</li>
+</ul>
+</li>
+<li><strong>Kernel-Level Threads</strong>:
+<ul>
+<li>Managed by the kernel</li>
+</ul>
+</li>
+</ul>
+<p>There exist trade-offs of each technique, and there exists various hybrid approaches.</p>
+<h2 id="user-level-threads"><a class="header" href="#user-level-threads">User-level Threads</a></h2>
+<p>From the perspective of the Kernel, it is managing processes only. Threads are implemented by a software library, and the process maintains its own thread table for scheduling.</p>
+<p>Advantages:</p>
+<ul>
+<li>Better performance as:
+<ul>
+<li>Thread creation and termination are fast.</li>
+<li>Thread switching is fast.</li>
+<li>Thread synchronisation (e.g. via joining other threads) is fast.</li>
+<li>All these operations don't require any kernel involvement.</li>
+</ul>
+</li>
+<li>Each application can have its own scheduling algorithm (provides more flexibility).</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>Blocking system calls stops all threads in a process, which denies one of the core motivations for using threads.</li>
+<li>Non-blocking I/O can be used (e.g. <code>select</code>), which can be harder to use and understand.</li>
+<li>During a page fault, the OS blocks the entire process even though other threads may be runnable.</li>
+</ul>
+<h2 id="kernel-threads"><a class="header" href="#kernel-threads">Kernel Threads</a></h2>
+<p>Advantages:</p>
+<ul>
+<li>Blocking system calls / page faults is easy, as if one thread blocks / causes a page fault the kernel can schedule a runnable thread from the same process</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>Thread creation and termination is more expensive as they require systems calls (still much cheaper than processes), but this can be mitigated by recycling threads using thread pools.</li>
+<li>Thread synchronisation becomes more expensive as they require blocking system calls.</li>
+<li>Thread switching becomes more expensive as they require a system call (again, still much cheaper than process switches as they all exist in the same address space).</li>
+<li>Applications can't have their own scheduling algorithms.</li>
+</ul>
+<h2 id="hybrid-approaches"><a class="header" href="#hybrid-approaches">Hybrid Approaches</a></h2>
+<p>By using kernel threads and multiplexing a larger numebr of user-level threads onto some / all kernel threads. This provides the full true concurrency of kernel threads, but with the lightweight switching of user-level threads.</p>
+<h1 id="scheduling"><a class="header" href="#scheduling">Scheduling</a></h1>
+<h2 id="process-states"><a class="header" href="#process-states">Process States</a></h2>
+<p><img src="https://i.stack.imgur.com/KqZRe.png" alt="Process State Transition Diagram" /></p>
+<p><a href="https://stackoverflow.com/questions/43844228/process-states-on-a-single-processor-vs-dual-core-system">Source</a></p>
+<p>States are:</p>
+<ul>
+<li><strong>New</strong>: the process is being created.</li>
+<li><strong>Ready</strong>: the process is runnable and awaiting for processor time.</li>
+<li><strong>Running</strong>: the process is currently executing on the processor.</li>
+<li><strong>Waiting / Blocked</strong>: the process is waiting for an event to occur.</li>
+<li><strong>Terminated</strong>: process is being deleted.</li>
+</ul>
+<p>When multiple processes are ready to be run, something needs to decide which one to run. This is the purpose of the <strong>scheduler</strong>.</p>
+<h2 id="goals-of-scheduling-alorithms"><a class="header" href="#goals-of-scheduling-alorithms">Goals of Scheduling Alorithms</a></h2>
+<ul>
+<li><strong>Ensure Fairness</strong>: comparable processes should get comparable services.</li>
+<li><strong>Avoid Indefinite Postponement</strong>: no process should starve (i.e. every process should get CPU time).</li>
+<li><strong>Enforce Policy</strong>: e.g. process priorities.</li>
+<li><strong>Maximize Resource Utilisation</strong>: e.g. CPU, I/O devices, etc.</li>
+<li><strong>Minimize Overhead</strong>: minimize context switches, scheduling decisions should be fast and lightweight.</li>
+</ul>
+<p>Certain systems have even more goals depending on their workload:</p>
+<ul>
+<li><strong>Batch Systems</strong>:
+<ul>
+<li>Throughput: number of jobs per unit of time.</li>
+<li>Turnaround time: time between job submission and completion</li>
+</ul>
+</li>
+<li><strong>Interactive Systems</strong>:
+<ul>
+<li>Response Time (crucial): time between request being issued and first response.</li>
+</ul>
+</li>
+<li><strong>Real-Time Systems</strong>:
+<ul>
+<li>Soft Deadlines: failure to meet deadline is at most an annoyance (e.g. leading to degraded video quality).</li>
+<li>Hard Deadlines: failure to meet deadline is severe (e.g. leading to a plane crash).</li>
+</ul>
+</li>
+</ul>
+<h2 id="preemptive-vs-non-preemptive-scheduling"><a class="header" href="#preemptive-vs-non-preemptive-scheduling">Preemptive vs Non-Preemptive Scheduling</a></h2>
+<p><strong>Preemptive</strong> scheduling only allows processes to run for a maximum amount of fixed time. This requires a clock interrupt.</p>
+<p><strong>Non-preemptive</strong> scheduling lets the process run until it blocks or voluntarily releases the CPU.</p>
+<h2 id="cpu-bound-vs-io-bound-processes"><a class="header" href="#cpu-bound-vs-io-bound-processes">CPU-Bound vs I/O-Bound Processes</a></h2>
+<p><strong>CPU-bound processes</strong> spend most of their time using the CPU.</p>
+<p><strong>I/O-bound processes</strong> spend most of their time waiting for I/O events to occur, and tend to only use the CPU breifly before issuing new I/O requests.</p>
+<h2 id="general-purpose-scheduling"><a class="header" href="#general-purpose-scheduling">General-Purpose Scheduling</a></h2>
+<p>A general-purpose scheduler for an OS should use an algorithm that:</p>
+<ul>
+<li>favours short and I/O-bound jobs to get good resource utilisation and short response times.</li>
+<li>can quickly determine the nature of the job and adapt to changes (processes can have periods where they are I/O-bound, and other periods where they are CPU-bound).</li>
+</ul>
+<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
+<p><strong>Scheduling algorithms often need to balance conflicting goals</strong>. This is to ensure fairness, enforce policy, maximise resource utilisation, etc.</p>
+<p><strong>Different scheduling algorithms are appropriate in different contexts</strong>. A batch system will require a very different scheduling algorithm compared to an interactive system or real-time system.</p>
+<p>Well-studied scheduling algorithms include:</p>
+<ul>
+<li>First-Come First-Served (FCFS).</li>
+<li>Round Robin (RR).</li>
+<li>Shortest Job First (SJF).</li>
+<li>Shortest Remaining Time (SRT).</li>
+<li>Multilevel Feedback Queues (MLFQS).</li>
+<li>Lottery Scheduling.</li>
+</ul>
+<h1 id="first-come-first-served-fcfs-non-preemptive"><a class="header" href="#first-come-first-served-fcfs-non-preemptive">First-Come First-Served (FCFS) (Non-Preemptive)</a></h1>
+<p><img src="https://www.researchgate.net/profile/Neetu_Goel4/publication/249645533/figure/download/fig1/AS:668501794643974@1536394656707/First-Come-First-Serve-Scheduling-Characteristics-The-lack-of-prioritization-does.png" alt="FCFS Diagram" /></p>
+<p><a href="https://www.researchgate.net/figure/First-Come-First-Serve-Scheduling-Characteristics-The-lack-of-prioritization-does_fig1_249645533">Source</a></p>
+<p>In FCFS, new processes (and waiting processes once their event arrives) get added to the end of a ready queue. The scheduler takes the first process off the queue and runs it, and either the process gets terminated or added back to the waiting processes list (non-preemptive).</p>
+<p>Advantages of FCFS:</p>
+<ul>
+<li>No indefinite postponement as all processes will eventually be scheduled.</li>
+<li>Extreamly simple to implement.</li>
+</ul>
+<p>Disadvantages of FCFS:</p>
+<ul>
+<li>Long processes prevent shorter processes from completing, potentially reducing the overall throughput and / or turnaround time.</li>
+</ul>
+<h1 id="round-robin-rr-preemptive"><a class="header" href="#round-robin-rr-preemptive">Round-Robin (RR) (Preemptive)</a></h1>
+<p>RR is like FCFS, except the scheduler can preemptively stop the current process and put it back on the end of the ready queue when its time quantum is exceeded.</p>
+<p><strong>Time quantum</strong> is the allotted amount of processor time each process receives upon entering the running state. Quantum (also known as time slice) is usually around 10-200ms.</p>
+<p>Advantages of RR:</p>
+<ul>
+<li>It is fair as every ready job gets an equal share of the CPU.</li>
+<li>Response time is fast for a small number of jobs.</li>
+<li>The average turnaround time is low when run-times differ.</li>
+</ul>
+<p>Disadvantages of RR:</p>
+<ul>
+<li>Response time is high for large numbers of jobs as the entire ready queue will be long.</li>
+<li>If run-times are similar, turnaround time is high.</li>
+</ul>
+<p>RR Overhead is calculated as the time taken to switch contexts divided by the quantum value. For example:</p>
+<ul>
+<li>4ms quantum with 1ms context switch time = 1/4 = 20% of time (high overhead).</li>
+<li>1s quantum with 1ms context switch time = 1/1000 = 0.1% of time (low overhead).</li>
+</ul>
+<p>In general, as quantum increases:</p>
+<ul>
+<li>overhead decreases.</li>
+<li>response time worsens (e.g. when quantum = ∞, RR becomes FCFS).</li>
+</ul>
+<p>Therefore, when choosing a quantum value it should be much larger than than the context switch cost, but also provide a decent response time (depending on the expected workload).</p>
+<p>Some example quantum values for standard processes (although values can vary depending on process type, behaviour, priority, etc):</p>
+<ul>
+<li>Linux: 100ms.</li>
+<li>Windows client: 20ms.</li>
+<li>Windows server: 180ms.</li>
+</ul>
+<h1 id="shortest-job-first-sjf-non-preemptive-and-shortest-remaining-time-srt-preemptive"><a class="header" href="#shortest-job-first-sjf-non-preemptive-and-shortest-remaining-time-srt-preemptive">Shortest Job First (SJF) (Non-Preemptive) and Shortest Remaining Time (SRT) (Preemptive)</a></h1>
+<p>SJF performs scheduling by using the run-times that are known in advance, and simply picks the shortest job first. This can provide better turnaround time when compared with FCFS, and it is provably optimal when all jobs are available simulatneously.</p>
+<p>SRT is the preemptive version of SJF. It also requires that runtimes are known in advance. It chooses the process whose remaining time is shortest.</p>
+<p>For example:</p>
+<ul>
+<li>There exist 2 jobs in the ready queue, j1 = 6s and j2 = 4s.</li>
+<li>After 2 seconds, a new job of 1s arrives.</li>
+<li>In SJF, the job execution order looks like:
+<ol>
+<li>j2 for 4s.</li>
+<li>j3 for 1s.</li>
+<li>j1 for 6s.</li>
+</ol>
+</li>
+<li>In SRT, the job execution order looks like:
+<ol>
+<li>j2 for 2s.</li>
+<li>j3 for 1s.</li>
+<li>j2 for 2s more.</li>
+<li>j1 for 6s.</li>
+</ol>
+</li>
+</ul>
+<h2 id="note-knowing-run-times-in-advance"><a class="header" href="#note-knowing-run-times-in-advance">Note: Knowing Run-Times in Advance</a></h2>
+<p>Typically, run-times aren't usually available or even calculatable in advance. However, they can be estimated by either:</p>
+<ul>
+<li>Computing CPU burst estimates on heuristics (e.g. based on previous execution history). However, this is not always applicable.</li>
+<li>The user provides estimates for their process. In some cases, a user may attempt to cheat the system by under estimating their run-time, and so the scheduler needs to be able to counteract this (e.g. terminating or penalising processes after they exceed their estimated run-time).</li>
+</ul>
+<h1 id="fair-share-scheduling"><a class="header" href="#fair-share-scheduling">Fair-Share Scheduling</a></h1>
+<p>In fair-share, users are assigned some fraction of the CPU and the scheduler takes into account who owns a process before scheduling it. Fair-share is usually implemented along side other scheduling algorithms, most commonly round-robin.</p>
+<p>For example, assume there are two users each with 50% share of the CPU:</p>
+<ul>
+<li>User 1 has 4 processes: <code>A, B, C, D</code>.</li>
+<li>User 2 has 2 processes: <code>E, F</code>.</li>
+</ul>
+<p>Under a fair-share round-robin scheduler, a potential execution order of these processes could be <code>A, E, B, F, C, E, D, F</code>.</p>
+<h1 id="priority-scheduling-preemptive"><a class="header" href="#priority-scheduling-preemptive">Priority Scheduling (Preemptive)</a></h1>
+<p>Under a priority scheduling algorithm, processes are assigned priorities. Priorities are a heuristic used to determine the importance of the workload of the process. The result is that more important workloads (e.g. user facing processes such as video games) can be executed before lower priority ones (e.g. background processes fetching data like the weather).</p>
+<p>Priorities can be externally provided (e.g. from the user), or they can be based on process-specific metrics (e.g. their expected CPU burst). Priorities can also be <strong>static</strong> (i.e. unchanging) or <strong>dynamic</strong> (i.e. changing).</p>
+<p>For example, assume there exist 3 processes that arrive at the same time:</p>
+<ul>
+<li><code>A</code>: Priority = 4</li>
+<li><code>B</code>: Priority = 7</li>
+<li><code>C</code>: Priority = 1</li>
+</ul>
+<p>In this example, higher priority values means higher priority (in practice it can be the other way round). Under these conditions, the processes would execute in the order of <code>B, A, C</code>.</p>
+<h1 id="multilevel-feedback-queues-mlfqs-preemptive"><a class="header" href="#multilevel-feedback-queues-mlfqs-preemptive">Multilevel Feedback Queues (MLFQS) (Preemptive)</a></h1>
+<p>MLFQS is a practical way of implementing a priority based scheduling scheme. It is rather basic and fairly common, used in many OSs such as: Windows Vista, Windows 7, Mac OS X, Linux 2.6-2.6.23.</p>
+<p>It works by having one queue for each possible priority level. The scheduler simply runs the job on the highest non-empty priority queue, and each queue can use a different scheduling algorithm (round-robin is typically used).</p>
+<p>MLFQS needs:</p>
+<ul>
+<li>to determine the current nature of the job (e.g. is it I/O bound or CPU-bound?).</li>
+<li>to worry about starvation of lower-priority jobs.</li>
+<li>a feedback mechanism where job priorities are recomputed periodically (e.g. based on how much CPU they have recently used) and processes undergo <strong>aging</strong> where their priority increases as they waits.</li>
+</ul>
+<p>Some issues with MLFQS are that:</p>
+<ul>
+<li><strong>It is not very flexible</strong>: applications have effectively no control and priorities make no guarantees.</li>
+<li><strong>Does not react quickly to changes</strong>: it often requires a warm-up period (i.e. running the system for a while to get better results), which is a problem for real-time systems, multimedia apps, etc.</li>
+<li><strong>Cheating is a concern</strong>: a process can add meaningless I/O to boost its priority.</li>
+<li><strong>Cannot donate priority</strong>: a high priority process that requrie resources held by a low priority process must wait for the algorithm to increase the low priority process's priority before it can continue.</li>
+</ul>
+<h1 id="lottery-scheduling-preemptive"><a class="header" href="#lottery-scheduling-preemptive">Lottery Scheduling (Preemptive)</a></h1>
+<p>In lottery scheduling, jobs receive lottery tickets for various resources (e.g. CPU time), and at each scheduling decision, one ticket is chosen at random. The job holding that ticket wins, and receives what ever resource it was waiting for.</p>
+<p>For example, in a system with 100 tickets for CPU time if process A has 20 tickets, it's probabilty of running during the CPU quantum is 20%. Over a long period of time, this should end up resulting in A having 20% of the overall CPU time.</p>
+<p>Advantages:</p>
+<ul>
+<li><strong>The number of lottery tickets is meaningful</strong>: jobs holding p% of tickets should get p% of resources (unlike priorities).</li>
+<li><strong>It is highly responsive</strong>: if a new job is given p% of tickets it has p% chance to get what ever resource it requires at the <strong>next</strong> scheduling decision.</li>
+<li><strong>There is no starvation</strong>: every job will always have a chance of being run.</li>
+<li><strong>Jobs can exchange tickets</strong>: allowing for priority donation and for cooperating jobs to acheive certain goals.</li>
+<li><strong>Adding / removing jobs affect the remaining jobs proportionally</strong>.</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li><strong>Response time becomes unpredictable</strong>: it is not impossible for a process to be unlucky for a few lotteries, which can be bad for real time applications / interactive processes.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        
+        
+
+    </body>
+</html>

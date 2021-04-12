@@ -3,6 +3,8 @@
 - [Introduction](./introduction.md)
 - [Processes](./processes.md)
 - [Threads](./threads.md)
+  - [PThreads (POSIX Threads)](./threads/posix.md)
+  - [User-Level and Kernel-Level Threads](./threads/user-kernel.md)
 - [Scheduling](./scheduling.md)
   - [First-Come First-Served](./scheduling/fcfs.md)
   - [Round-Robin](./scheduling/rr.md)

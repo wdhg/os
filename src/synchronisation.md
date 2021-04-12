@@ -242,3 +242,82 @@ For example, assume there are two processes H and L with high and low priorities
 4. H attempts to acquire lock A.
 
 If A is a spin lock, then H would still be scheduled as it is busy waiting and has a higher priority than L. L would never get scheduled, effectively preventing both H and L from continuing.
+
+Two solutions to this problem is to either not use spin locks, or to temporarily increase L's priority whilst it holds lock A.
+
+### Lock Granularity
+
+**Lock granularity** is the amount of data a lock is protecting. Lock granularity is described as either course or fine:
+
+- **Course-grained**: a large amount of data is protected by the lock.
+- **Fine-grained**: a small amount of data is protected by the lock.
+
+**Lock overhead** is a measure of cost associated with using locks (e.g. memory space, initialisation, acquire and release times).
+
+**Lock contention** is a measure of the number of processes waiting for a lock. Typically as contention increases, parallelism decreases.
+
+An example of course-grained locking is:
+
+```c
+// ...
+
+int *accounts;
+int accounts_lock;
+
+void withdraw(int account_no, int amount) {
+  acquire(accounts_lock);
+
+  int balance = accounts[account_no];
+  accounts[account_no] = balance - amount;
+
+  release(accounts_lock);
+}
+
+void process_work_a() {
+  withdraw(1, 40);
+}
+
+void process_work_b() {
+  withdraw(2, 40);
+}
+```
+
+An example of fine-grained locking is:
+
+```c
+// ...
+
+struct {
+  int balance;
+  int account_lock;
+} Account;
+
+Accont *accounts;
+
+void withdraw(int account_no, int amount) {
+  acquire(accounts[account_no]->lock);
+
+  int balance = accounts[account_no]->balance;
+  accounts[account_no]->balance = balance - amount;
+
+  release(accounts[account_no]->lock);
+}
+
+void process_work_a() {
+  withdraw(1, 40);
+}
+
+void process_work_b() {
+  withdraw(2, 40);
+}
+```
+
+Different level granularity solutions have their uses, but typically as granularity gets finer:
+
+- lock overhead increase due to there being more locks.
+- lock contention decreases as its less likely that processes will contend for the same lock.
+- complexity increases as lock acquisition order and storing the locks safely needs to be considered.
+
+To minimise lock contention and maximise concurrency:
+- choose a finer lock granularity (but understand its tradeoffs)
+- release a lock as soon as possible (make critical sections as **small** as possible)

@@ -1,5 +1,6 @@
 # Summary
 
+- [Preface](./preface.md)
 - [Introduction](./introduction.md)
 - [Processes](./processes.md)
   - [UNIX Processes](./processes/unix.md)
@@ -16,3 +17,4 @@
   - [Priority Scheduling](./scheduling/priority.md)
   - [Multilevel Feedback Queues (MLFQS)](./scheduling/mlfqs.md)
   - [Lottery Scheduling](./scheduling/lottery.md)
+- [Synchronisation](./synchronisation.md)

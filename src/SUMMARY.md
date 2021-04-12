@@ -2,6 +2,9 @@
 
 - [Introduction](./introduction.md)
 - [Processes](./processes.md)
+  - [UNIX Processes](./processes/unix.md)
+  - [Windows Processes](./processes/windows.md)
+  - [Process Communication](./processes/communication.md)
 - [Threads](./threads.md)
   - [PThreads (POSIX Threads)](./threads/posix.md)
   - [User-Level and Kernel-Level Threads](./threads/user-kernel.md)

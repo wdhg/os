@@ -16,3 +16,4 @@
   - [Priority Scheduling](./scheduling/priority.md)
   - [Multilevel Feedback Queues (MLFQS)](./scheduling/mlfqs.md)
   - [Lottery Scheduling](./scheduling/lottery.md)
+- [Synchronisation](./synchronisation.md)

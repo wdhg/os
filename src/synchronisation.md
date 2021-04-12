@@ -99,4 +99,47 @@ This fixes the problem of having to turn off interrupts, but it also introduces 
 
 Strict alternation uses a mechanism called **busy waiting**, which means a loop that constantly tests a value until it meets a certain condition. This is bad as it wastes valuable CPU time. As a result, busy waiting should only ever be used when the wait is expected to be short.
 
+### Peterson's Solution
 
+Peterson's solution is similar to strict alternation, but it solves a few of its issues.
+
+An example of it is:
+
+```c
+#include <stdbool.h>
+
+int turn = 0;
+bool interested[2] = {false, false};
+
+// thead is either 0 or 1
+void enter_critical(int thread) {
+  int other_thread = 1 - thread;
+  interested[thread] = true;
+  turn = other_thread;
+  while (turn == other_thread && interested[other_thread]) {}
+}
+
+void exit_critical(int thread) {
+  interested[thread] = 0;
+}
+
+// ...
+
+void process_work_0() {
+  enter_critical(0);
+  critical_section();
+  exit_critical(0);
+}
+
+void process_work_1() {
+  enter_critical(1);
+  critical_section();
+  exit_critical(1);
+}
+```
+
+Using this example, assume processes 0 and 1 are requesting permission to enter the critical section. Then `interested[0] = true`, `interested[1] = true`, and `turn` is now controlling which thread is able to enter the critical section.
+
+If `turn = 0`, process 0 will then be able to enter into the critical section. Process 1 is now waiting for process 0 to set `interested[0]` to `false` once process 0 calls `exit_critical`. Then process 1 can enter the critical section.
+
+If `turn = 1` the opposite will happen, where process 1 will enter the critical section before process 0.

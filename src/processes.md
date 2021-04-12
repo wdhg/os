@@ -1,6 +1,6 @@
 # Processes
 
-A process is an instance of a program being executed (a running program). They allow for a single processor to run multiple programs "simulatneouly". Each process runs on a virtual CPU, and the real CPU can use this to run any single process. Effectively, the single CPU has been divided into multiple virtual CPUs.
+A process is an instance of a program being executed (a running program). They allow for a single processor to run multiple programs "simulatneously". Each process runs on a virtual CPU, and the real CPU can use this to run any single process. Effectively, the single CPU has been divided into multiple virtual CPUs.
 
 ## Why have Processes?
 

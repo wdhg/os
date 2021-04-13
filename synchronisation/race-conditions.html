@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Race Conditions - Operating Systems</title>
+        <title>Race Conditions and Memory Models - Operating Systems</title>
         
         
 
@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../preface.html"><strong aria-hidden="true">1.</strong> Preface</a></li><li class="chapter-item expanded "><a href="../introduction.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../processes.html"><strong aria-hidden="true">3.</strong> Processes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../processes/unix.html"><strong aria-hidden="true">3.1.</strong> UNIX Processes</a></li><li class="chapter-item expanded "><a href="../processes/windows.html"><strong aria-hidden="true">3.2.</strong> Windows Processes</a></li><li class="chapter-item expanded "><a href="../processes/communication.html"><strong aria-hidden="true">3.3.</strong> Process Communication</a></li></ol></li><li class="chapter-item expanded "><a href="../threads.html"><strong aria-hidden="true">4.</strong> Threads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../threads/posix.html"><strong aria-hidden="true">4.1.</strong> PThreads (POSIX Threads)</a></li><li class="chapter-item expanded "><a href="../threads/user-kernel.html"><strong aria-hidden="true">4.2.</strong> User-Level and Kernel-Level Threads</a></li></ol></li><li class="chapter-item expanded "><a href="../scheduling.html"><strong aria-hidden="true">5.</strong> Scheduling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../scheduling/fcfs.html"><strong aria-hidden="true">5.1.</strong> First-Come First-Served</a></li><li class="chapter-item expanded "><a href="../scheduling/rr.html"><strong aria-hidden="true">5.2.</strong> Round-Robin</a></li><li class="chapter-item expanded "><a href="../scheduling/sjf-srt.html"><strong aria-hidden="true">5.3.</strong> Shortest Job First and Shortest Remaining Time</a></li><li class="chapter-item expanded "><a href="../scheduling/fs.html"><strong aria-hidden="true">5.4.</strong> Fair-Share Scheduling</a></li><li class="chapter-item expanded "><a href="../scheduling/priority.html"><strong aria-hidden="true">5.5.</strong> Priority Scheduling</a></li><li class="chapter-item expanded "><a href="../scheduling/mlfqs.html"><strong aria-hidden="true">5.6.</strong> Multilevel Feedback Queues (MLFQS)</a></li><li class="chapter-item expanded "><a href="../scheduling/lottery.html"><strong aria-hidden="true">5.7.</strong> Lottery Scheduling</a></li></ol></li><li class="chapter-item expanded "><a href="../synchronisation.html"><strong aria-hidden="true">6.</strong> Synchronisation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../synchronisation/mutual-exclusion.html"><strong aria-hidden="true">6.1.</strong> Attempts at Gaining Mutual Exclusion</a></li><li class="chapter-item expanded "><a href="../synchronisation/atomics.html"><strong aria-hidden="true">6.2.</strong> Atomic Operations</a></li><li class="chapter-item expanded "><a href="../synchronisation/locks.html"><strong aria-hidden="true">6.3.</strong> Locks</a></li><li class="chapter-item expanded "><a href="../synchronisation/race-conditions.html" class="active"><strong aria-hidden="true">6.4.</strong> Race Conditions</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../preface.html"><strong aria-hidden="true">1.</strong> Preface</a></li><li class="chapter-item expanded "><a href="../introduction.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../processes.html"><strong aria-hidden="true">3.</strong> Processes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../processes/unix.html"><strong aria-hidden="true">3.1.</strong> UNIX Processes</a></li><li class="chapter-item expanded "><a href="../processes/windows.html"><strong aria-hidden="true">3.2.</strong> Windows Processes</a></li><li class="chapter-item expanded "><a href="../processes/communication.html"><strong aria-hidden="true">3.3.</strong> Process Communication</a></li></ol></li><li class="chapter-item expanded "><a href="../threads.html"><strong aria-hidden="true">4.</strong> Threads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../threads/posix.html"><strong aria-hidden="true">4.1.</strong> PThreads (POSIX Threads)</a></li><li class="chapter-item expanded "><a href="../threads/user-kernel.html"><strong aria-hidden="true">4.2.</strong> User-Level and Kernel-Level Threads</a></li></ol></li><li class="chapter-item expanded "><a href="../scheduling.html"><strong aria-hidden="true">5.</strong> Scheduling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../scheduling/fcfs.html"><strong aria-hidden="true">5.1.</strong> First-Come First-Served</a></li><li class="chapter-item expanded "><a href="../scheduling/rr.html"><strong aria-hidden="true">5.2.</strong> Round-Robin</a></li><li class="chapter-item expanded "><a href="../scheduling/sjf-srt.html"><strong aria-hidden="true">5.3.</strong> Shortest Job First and Shortest Remaining Time</a></li><li class="chapter-item expanded "><a href="../scheduling/fs.html"><strong aria-hidden="true">5.4.</strong> Fair-Share Scheduling</a></li><li class="chapter-item expanded "><a href="../scheduling/priority.html"><strong aria-hidden="true">5.5.</strong> Priority Scheduling</a></li><li class="chapter-item expanded "><a href="../scheduling/mlfqs.html"><strong aria-hidden="true">5.6.</strong> Multilevel Feedback Queues (MLFQS)</a></li><li class="chapter-item expanded "><a href="../scheduling/lottery.html"><strong aria-hidden="true">5.7.</strong> Lottery Scheduling</a></li></ol></li><li class="chapter-item expanded "><a href="../synchronisation.html"><strong aria-hidden="true">6.</strong> Synchronisation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../synchronisation/mutual-exclusion.html"><strong aria-hidden="true">6.1.</strong> Attempts at Gaining Mutual Exclusion</a></li><li class="chapter-item expanded "><a href="../synchronisation/atomics.html"><strong aria-hidden="true">6.2.</strong> Atomic Operations</a></li><li class="chapter-item expanded "><a href="../synchronisation/locks.html"><strong aria-hidden="true">6.3.</strong> Locks</a></li><li class="chapter-item expanded "><a href="../synchronisation/race-conditions.html" class="active"><strong aria-hidden="true">6.4.</strong> Race Conditions and Memory Models</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -163,9 +163,10 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="race-conditions"><a class="header" href="#race-conditions">Race Conditions</a></h1>
+                        <h1 id="race-conditions-and-memory-models"><a class="header" href="#race-conditions-and-memory-models">Race Conditions and Memory Models</a></h1>
+<h2 id="race-conditions"><a class="header" href="#race-conditions">Race Conditions</a></h2>
 <p>A <strong>race condition</strong> occurs when any two processes read and write shared data without the protection of any synchronisation mechanism. The result depends on the execution order of each process (e.g. their exact interleaving).</p>
-<h2 id="thread-interleavings"><a class="header" href="#thread-interleavings">Thread Interleavings</a></h2>
+<h3 id="thread-interleavings"><a class="header" href="#thread-interleavings">Thread Interleavings</a></h3>
 <p>The <strong>thread interleavings</strong> of two or more threads is the total set of all possible orderings of their statement execution.</p>
 <p>For example, two threads A and B with statements <code>{A1; A2}</code> and <code>{B1; B2}</code> respectively have thread interleavings:</p>
 <ul>
@@ -176,6 +177,120 @@
 <li><code>B1 -&gt; A1 -&gt; B2 -&gt; A2</code></li>
 <li><code>B1 -&gt; A1 -&gt; A2 -&gt; B2</code></li>
 </ul>
+<h2 id="memory-models"><a class="header" href="#memory-models">Memory Models</a></h2>
+<p>A <strong>memory model</strong> describes the the interactions of threads through memory and shared use of data. There exist many memory models as they are dependant on hardware behaviour and compiler optimisations.</p>
+<h3 id="sequential-consistency"><a class="header" href="#sequential-consistency">Sequential Consistency</a></h3>
+<p><strong>Sequential Consistency</strong>: The operations of each thread appear in program order, and the operations of all threads are executed in some sequential order atomically.</p>
+<p>In this book, sequential consistency is assumed.</p>
+<p>For example, under sequential consistency it is impossible for both threads to read <code>flag1 == 0</code> and <code>flag2 == 0</code> inside their if conditions:</p>
+<pre><code class="language-c">int flag1 = 0;
+int flag2 = 0;
+
+void thread_work_a() {
+  flag1 = 1;
+  if (flag2 == 0) {
+    critical_section();
+  }
+}
+
+void thread_work_b() {
+  flag2 = 1;
+  if (flag1 == 0) {
+    critical_section();
+  }
+}
+</code></pre>
+<p>However under a <strong>weak memory model</strong>, it would be possible.</p>
+<h3 id="weak-memory-models"><a class="header" href="#weak-memory-models">Weak Memory Models</a></h3>
+<p>Under <strong>weak memory models</strong>, the hardware (or compiler) is permitted to reorder memory writes.</p>
+<h3 id="happens-before-relationship"><a class="header" href="#happens-before-relationship">Happens-Before Relationship</a></h3>
+<p>A <strong>happens-before relationship</strong> is a theoretical framework that is used reason about race conditions under concurrency. It works by introducing a partial order between events (e.g. instructions) in a trace, denoted by <code>a -&gt; b</code> where <code>a</code> and <code>b</code> are events in a trace.</p>
+<p>For example, consider <code>a</code> and <code>b</code> where <code>a</code> occurs before <code>b</code> in the trace:</p>
+<ul>
+<li>If <code>a</code> and <code>b</code> are in the same thread, then <code>a -&gt; b</code>.</li>
+<li>If <code>a</code> is <code>release(lock)</code> and <code>b</code> is <code>acquire(lock)</code>, then <code>a -&gt; b</code> (this can be generalised for other synchronisation mechanisms).</li>
+</ul>
+<p>Some properties about <code>-&gt;</code>:</p>
+<ul>
+<li><strong>Irreflexive</strong>: for all <code>a</code>, <code>a -/-&gt; a</code> (i.e. <code>a -&gt; a</code> is impossible).</li>
+<li><strong>Antisymmetric</strong>: for all <code>a</code>, <code>b</code>, if <code>a -&gt; b</code> then <code>b -/-&gt; a</code>.</li>
+<li><strong>Transitive</strong>: for all <code>a</code>, <code>b</code>, <code>c</code>, if <code>a -&gt; b</code> and <code>b -&gt; c</code> then <code>a -&gt; c</code>.</li>
+</ul>
+<p>A data race (race condition) occurs between <code>a</code> and <code>b</code> in the trace if and only if:</p>
+<ul>
+<li>they access the same memory location.</li>
+<li>at least one of the is a write.</li>
+<li>they are unordered accoring to happens-before.</li>
+</ul>
+<h3 id="data-race-examples"><a class="header" href="#data-race-examples">Data Race Examples</a></h3>
+<pre><code class="language-c">int a, b;
+
+void thread_work_a() {
+  a = 1; // write
+  b = 1; // write
+}
+
+void thread_work_b() {
+  b = 2; // write
+  a = 2; // write
+}
+</code></pre>
+<p>The partial orders are: <code>a = 1 -&gt; b = 1</code> and <code>b = 2 -&gt; a = 2</code>. Since the instructions:</p>
+<ul>
+<li>access the same memory</li>
+<li>are all writes</li>
+<li>are unordered accoring to happens-before</li>
+</ul>
+<p>there is an obvious data race.</p>
+<pre><code class="language-c">int a, b;
+int a_b_lock;
+
+void thread_work_a() {
+  acquire(a_b_lock); // lock
+  a = 1;             // write
+  b = 1;             // write
+  release(a_b_lock); // unlock
+}
+
+void thread_work_b() {
+  acquire(a_b_lock); // lock
+  b = 2;             // write
+  a = 2;             // write
+  release(a_b_lock); // unlock
+}
+</code></pre>
+<p>The potential traces are: </p>
+<ul>
+<li><code>acquire(a_b_lock) -&gt; a = 1 -&gt; b = 1 -&gt; release(a_b_lock) -&gt; acquire(a_b_lock) -&gt; b = 2 -&gt; a = 2 -&gt; release(a_b_lock)</code></li>
+<li><code>acquire(a_b_lock) -&gt; b = 2 -&gt; a = 2 -&gt; release(a_b_lock) -&gt; acquire(a_b_lock) -&gt; a = 1 -&gt; b = 1 -&gt; release(a_b_lock)</code></li>
+</ul>
+<p>As they are ordered according to happens-before, there is no data race.</p>
+<pre><code class="language-c">int a, b;
+int b_lock;
+
+void thread_work_a() {
+  a++;             // write
+  acquire(b_lock); // lock
+  b++;             // write
+  release(b_lock); // unlock
+}
+
+void thread_work_b() {
+  acquire(b_lock); // lock
+  b++;             // write
+  release(b_lock); // unlock
+  a++;             // write
+}
+</code></pre>
+<p>This example is interesting. If we assume thread A is scheduled first, the trace would look like:</p>
+<p><code>a++ -&gt; acquire(b_lock) -&gt; b++ -&gt; release(b_lock) -&gt; acquire(b_lock) -&gt; b++ -&gt; release(b_lock) -&gt; a++</code></p>
+<p>which looks safe. However, if thread B is scheduled first the trace would look like:</p>
+<pre><code>acquire(b_lock) -&gt; b++ -&gt; release(b_lock) -&gt; a++
+                                |
+                                V
+                   a++ -&gt; acquire(b_lock) -&gt; b++ -&gt; release(b_lock) 
+</code></pre>
+<p>Now both the <code>a++</code> instructions are unordered relative with each other, which is a data race (<code>a++</code> is <strong>not</strong> atomic).</p>
 
                     </main>
 

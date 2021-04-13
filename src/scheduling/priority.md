@@ -11,4 +11,3 @@ For example, assume there exist 3 processes that arrive at the same time:
 - `C`: Priority = 1
 
 In this example, higher priority values means higher priority (in practice it can be the other way round). Under these conditions, the processes would execute in the order of `B, A, C`.
-

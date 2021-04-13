@@ -8,4 +8,3 @@ For example, assume there are two users each with 50% share of the CPU:
 - User 2 has 2 processes: `E, F`.
 
 Under a fair-share round-robin scheduler, a potential execution order of these processes could be `A, E, B, F, C, E, D, F`.
-

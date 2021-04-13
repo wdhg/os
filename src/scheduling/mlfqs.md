@@ -16,4 +16,3 @@ Some issues with MLFQS are that:
 - **Does not react quickly to changes**: it often requires a warm-up period (i.e. running the system for a while to get better results), which is a problem for real-time systems, multimedia apps, etc.
 - **Cheating is a concern**: a process can add meaningless I/O to boost its priority.
 - **Cannot donate priority**: a high priority process that requrie resources held by a low priority process must wait for the algorithm to increase the low priority process's priority before it can continue.
-

@@ -21,4 +21,4 @@
   - [Attempts at Gaining Mutual Exclusion](./synchronisation/mutual-exclusion.md)
   - [Atomic Operations](./synchronisation/atomics.md)
   - [Locks](./synchronisation/locks.md)
-  - [Race Conditions](./synchronisation/race-conditions.md)
+  - [Race Conditions and Memory Models](./synchronisation/race-conditions.md)

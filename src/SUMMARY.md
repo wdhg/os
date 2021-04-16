@@ -23,3 +23,4 @@
   - [Locks](./synchronisation/locks.md)
   - [Race Conditions and Memory Models](./synchronisation/race-conditions.md)
   - [Semaphores](./synchronisation/semaphores.md)
+  - [Monitors](./synchronisation/monitors.md)

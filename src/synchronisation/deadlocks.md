@@ -64,7 +64,7 @@ Dynamic Avoidance works by checking each request to see if it will cause a deadl
 
 Banker's Algorithm is used to check if a sequence of resource allocations will lead to a **safe state** or not.
 
-A **safe state** is any state where there exists a sequence of allocations that guarantees that all customers can be satisfied.
+A **safe state** is any state where there exists a sequence of allocations that guarantees all customers can be satisfied.
 
 Using the example of a bank:
 
@@ -123,3 +123,39 @@ The first state is safe as the following sequence of requests can occur:
 6. B pays back 5 credits (Free: 9).
 7. A requests 5 credits (Free: 4).
 8. A pays back 6 credits (Free: 10).
+
+With this definition of a safe state, we can then only grant requests that lead to a safe state. This doesn't necessarily mean that an unsafe state will lead to a deadlock, but rather that it cannot be guaranteed that it won't lead to a deadlock.
+
+This algorithm can be generalised to handle multiple resource types.
+
+## Prevention
+
+Prevention works by preventing any one of the four deadlock conditions: mutual exclusion, hold and wait, no preemption, or circular wait:
+
+- **Attacking the Mutual Exclusion Condition**: for example, by sharing the resources.
+- **Attacking the Hold and Wait Condition**: force all processes to request their resources before starting, and if they aren't all available then wait. This has an issue that the process must know what resources it will need in advance.
+- **Attacking the No Preemption Condition**: by forcing a process to give up their resource. This can be bad in certain situations, such as a stopping a process using an external output device (e.g. a printer) would be bad.
+- **Attacking the Mutual Exclusion Condition**: either by forcing a process to use a single resource (which would cause optimality issues), or by numbering all resources and forcing processes to request resources in the order they are numbered (this is hard as a large number of resources would be difficult to organise).
+
+## Other Types of Deadlock
+
+### Communication Deadlock
+
+A **communication deadlock** is specific type of deadlock caused by a poor communication policy. For example:
+
+- Process A sends a message to process B, but the message is lost in transit.
+- Process B is blocked whilst it is waiting for this message.
+- Process A is blocked whilst waiting for a response.
+- Both processes are blocked waiting for each other, hence it is a deadlock.
+
+Ordering of resources or careful scheduling are not useful here. Instead, we can use a communication protocol based on timeouts. In the previous example, A and B would timeout and be able to recover fully.
+
+### Livelock
+
+A **livelock** is when processes are not blocked, but they or the system as a whole is not making any progress.
+
+For example, constider a system which has two processes where one receives messages and the other processes them. If the processing thread has a lower priority then under high load (i.e. when many messages are being received), the processing thread will never be able to run. This situation is also known as a **receive livelock**, and they are related to **starvation**.
+
+### Starvation
+
+Starvation is the event where progress is not being made as the system is unable to schedule the required process. Picking the correct scheduling policy is important to prevent certain livelocks.

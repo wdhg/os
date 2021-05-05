@@ -25,3 +25,6 @@
   - [Semaphores](./synchronisation/semaphores.md)
   - [Monitors](./synchronisation/monitors.md)
   - [Deadlocks](./synchronisation/deadlocks.md)
+- [Memory Management](./memory-management.md)
+  - [Logical vs. Physical Address Space](./memory-management/logical-physical.md)
+  - [Allocation and Protection](./memory-management/allocation-and-protection.md)

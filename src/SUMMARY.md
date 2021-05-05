@@ -28,3 +28,6 @@
 - [Memory Management](./memory-management.md)
   - [Logical vs. Physical Address Space](./memory-management/logical-physical.md)
   - [Allocation and Protection](./memory-management/allocation-and-protection.md)
+  - [Virtual Memory with Paging](./memory-management/virtual-memory.md)
+    - [Paging](./memory-management/virtual-memory/paging.md)
+    - [Segmentation](./memory-management/virtual-memory/segmentation.md)

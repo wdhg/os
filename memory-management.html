@@ -3,10 +3,8 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title></title>
+        <title>Memory Management - Operating Systems</title>
         
-        
-        <base href="/">
         
 
 
@@ -97,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="preface.html"><strong aria-hidden="true">1.</strong> Preface</a></li><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="processes.html"><strong aria-hidden="true">3.</strong> Processes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="processes/unix.html"><strong aria-hidden="true">3.1.</strong> UNIX Processes</a></li><li class="chapter-item expanded "><a href="processes/windows.html"><strong aria-hidden="true">3.2.</strong> Windows Processes</a></li><li class="chapter-item expanded "><a href="processes/communication.html"><strong aria-hidden="true">3.3.</strong> Process Communication</a></li></ol></li><li class="chapter-item expanded "><a href="threads.html"><strong aria-hidden="true">4.</strong> Threads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="threads/posix.html"><strong aria-hidden="true">4.1.</strong> PThreads (POSIX Threads)</a></li><li class="chapter-item expanded "><a href="threads/user-kernel.html"><strong aria-hidden="true">4.2.</strong> User-Level and Kernel-Level Threads</a></li></ol></li><li class="chapter-item expanded "><a href="scheduling.html"><strong aria-hidden="true">5.</strong> Scheduling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="scheduling/fcfs.html"><strong aria-hidden="true">5.1.</strong> First-Come First-Served</a></li><li class="chapter-item expanded "><a href="scheduling/rr.html"><strong aria-hidden="true">5.2.</strong> Round-Robin</a></li><li class="chapter-item expanded "><a href="scheduling/sjf-srt.html"><strong aria-hidden="true">5.3.</strong> Shortest Job First and Shortest Remaining Time</a></li><li class="chapter-item expanded "><a href="scheduling/fs.html"><strong aria-hidden="true">5.4.</strong> Fair-Share Scheduling</a></li><li class="chapter-item expanded "><a href="scheduling/priority.html"><strong aria-hidden="true">5.5.</strong> Priority Scheduling</a></li><li class="chapter-item expanded "><a href="scheduling/mlfqs.html"><strong aria-hidden="true">5.6.</strong> Multilevel Feedback Queues (MLFQS)</a></li><li class="chapter-item expanded "><a href="scheduling/lottery.html"><strong aria-hidden="true">5.7.</strong> Lottery Scheduling</a></li></ol></li><li class="chapter-item expanded "><a href="synchronisation.html"><strong aria-hidden="true">6.</strong> Synchronisation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="synchronisation/mutual-exclusion.html"><strong aria-hidden="true">6.1.</strong> Attempts at Gaining Mutual Exclusion</a></li><li class="chapter-item expanded "><a href="synchronisation/atomics.html"><strong aria-hidden="true">6.2.</strong> Atomic Operations</a></li><li class="chapter-item expanded "><a href="synchronisation/locks.html"><strong aria-hidden="true">6.3.</strong> Locks</a></li><li class="chapter-item expanded "><a href="synchronisation/race-conditions.html"><strong aria-hidden="true">6.4.</strong> Race Conditions and Memory Models</a></li><li class="chapter-item expanded "><a href="synchronisation/semaphores.html"><strong aria-hidden="true">6.5.</strong> Semaphores</a></li><li class="chapter-item expanded "><a href="synchronisation/monitors.html"><strong aria-hidden="true">6.6.</strong> Monitors</a></li><li class="chapter-item expanded "><a href="synchronisation/deadlocks.html"><strong aria-hidden="true">6.7.</strong> Deadlocks</a></li></ol></li><li class="chapter-item expanded "><a href="memory-management.html"><strong aria-hidden="true">7.</strong> Memory Management</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="memory-management/logical-physical.html"><strong aria-hidden="true">7.1.</strong> Logical vs. Physical Address Space</a></li><li class="chapter-item expanded "><a href="memory-management/allocation-and-protection.html"><strong aria-hidden="true">7.2.</strong> Allocation and Protection</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="preface.html"><strong aria-hidden="true">1.</strong> Preface</a></li><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="processes.html"><strong aria-hidden="true">3.</strong> Processes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="processes/unix.html"><strong aria-hidden="true">3.1.</strong> UNIX Processes</a></li><li class="chapter-item expanded "><a href="processes/windows.html"><strong aria-hidden="true">3.2.</strong> Windows Processes</a></li><li class="chapter-item expanded "><a href="processes/communication.html"><strong aria-hidden="true">3.3.</strong> Process Communication</a></li></ol></li><li class="chapter-item expanded "><a href="threads.html"><strong aria-hidden="true">4.</strong> Threads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="threads/posix.html"><strong aria-hidden="true">4.1.</strong> PThreads (POSIX Threads)</a></li><li class="chapter-item expanded "><a href="threads/user-kernel.html"><strong aria-hidden="true">4.2.</strong> User-Level and Kernel-Level Threads</a></li></ol></li><li class="chapter-item expanded "><a href="scheduling.html"><strong aria-hidden="true">5.</strong> Scheduling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="scheduling/fcfs.html"><strong aria-hidden="true">5.1.</strong> First-Come First-Served</a></li><li class="chapter-item expanded "><a href="scheduling/rr.html"><strong aria-hidden="true">5.2.</strong> Round-Robin</a></li><li class="chapter-item expanded "><a href="scheduling/sjf-srt.html"><strong aria-hidden="true">5.3.</strong> Shortest Job First and Shortest Remaining Time</a></li><li class="chapter-item expanded "><a href="scheduling/fs.html"><strong aria-hidden="true">5.4.</strong> Fair-Share Scheduling</a></li><li class="chapter-item expanded "><a href="scheduling/priority.html"><strong aria-hidden="true">5.5.</strong> Priority Scheduling</a></li><li class="chapter-item expanded "><a href="scheduling/mlfqs.html"><strong aria-hidden="true">5.6.</strong> Multilevel Feedback Queues (MLFQS)</a></li><li class="chapter-item expanded "><a href="scheduling/lottery.html"><strong aria-hidden="true">5.7.</strong> Lottery Scheduling</a></li></ol></li><li class="chapter-item expanded "><a href="synchronisation.html"><strong aria-hidden="true">6.</strong> Synchronisation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="synchronisation/mutual-exclusion.html"><strong aria-hidden="true">6.1.</strong> Attempts at Gaining Mutual Exclusion</a></li><li class="chapter-item expanded "><a href="synchronisation/atomics.html"><strong aria-hidden="true">6.2.</strong> Atomic Operations</a></li><li class="chapter-item expanded "><a href="synchronisation/locks.html"><strong aria-hidden="true">6.3.</strong> Locks</a></li><li class="chapter-item expanded "><a href="synchronisation/race-conditions.html"><strong aria-hidden="true">6.4.</strong> Race Conditions and Memory Models</a></li><li class="chapter-item expanded "><a href="synchronisation/semaphores.html"><strong aria-hidden="true">6.5.</strong> Semaphores</a></li><li class="chapter-item expanded "><a href="synchronisation/monitors.html"><strong aria-hidden="true">6.6.</strong> Monitors</a></li><li class="chapter-item expanded "><a href="synchronisation/deadlocks.html"><strong aria-hidden="true">6.7.</strong> Deadlocks</a></li></ol></li><li class="chapter-item expanded "><a href="memory-management.html" class="active"><strong aria-hidden="true">7.</strong> Memory Management</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="memory-management/logical-physical.html"><strong aria-hidden="true">7.1.</strong> Logical vs. Physical Address Space</a></li><li class="chapter-item expanded "><a href="memory-management/allocation-and-protection.html"><strong aria-hidden="true">7.2.</strong> Allocation and Protection</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -165,15 +163,69 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="document-not-found-404"><a class="header" href="#document-not-found-404">Document not found (404)</a></h1>
-<p>This URL is invalid, sorry. Please use the navigation bar or search to continue.</p>
+                        <h1 id="memory-management"><a class="header" href="#memory-management">Memory Management</a></h1>
+<p>Memory management is a key component of the computer. Each instruction cycle involves a memory access.</p>
+<h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
+<ul>
+<li>Basic concepts:
+<ul>
+<li>Memory allocation.</li>
+<li>Swapping.</li>
+</ul>
+</li>
+<li>Virtual memory:
+<ul>
+<li>Paging</li>
+</ul>
+</li>
+<li>Demand paging:
+<ul>
+<li>Page replacement algorithms.</li>
+<li>Working set model.</li>
+</ul>
+</li>
+<li>Linux memory management.</li>
+</ul>
+<h2 id="memory-hierarchy"><a class="header" href="#memory-hierarchy">Memory Hierarchy</a></h2>
+<pre><code>
+  +--------------+--------------+---------------------------+
+  | Type / Level | Typical Size | Latency                   |
+  +==============+==============+===========================+
+  | Registers    | Bytes        | 1 CPU clock cycle or less |
+  +--------------+--------------+---------------------------+
+  | L1 Cache     | KB           | ~1ns                      |
+  +--------------+--------------+---------------------------+
+  | L2/L3 Cache  | MB           | ~10ns                     |
+  +--------------+--------------+---------------------------+
+  | Memory       | GB           | ~100ns (many cycles)      |
+  +--------------+--------------+---------------------------+
+  | SSD          | GB / TB      | ~25µs read / ~250µs write |
+  | Disk         | GB / TB      | ~1-10ms                   |
+  +--------------+--------------+---------------------------+
+  | Network      | PB           | ~10-1000ms                |
+  +--------------+--------------+---------------------------+
+
+</code></pre>
+<p>Note:</p>
+<ul>
+<li>Cache sits between the main memory and the CPU registers.</li>
+<li>SDD and Disk are at the same level.</li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
+                            <a rel="prev" href="synchronisation/deadlocks.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
 
+                        
+                            <a rel="next" href="memory-management/logical-physical.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -183,7 +235,15 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
+                    <a rel="prev" href="synchronisation/deadlocks.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
 
+                
+                    <a rel="next" href="memory-management/logical-physical.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
                 
             </nav>
 

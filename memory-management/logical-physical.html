@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>User-Level and Kernel-Level Threads - Operating Systems</title>
+        <title>Logical vs. Physical Address Space - Operating Systems</title>
         
         
 
@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../preface.html"><strong aria-hidden="true">1.</strong> Preface</a></li><li class="chapter-item expanded "><a href="../introduction.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../processes.html"><strong aria-hidden="true">3.</strong> Processes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../processes/unix.html"><strong aria-hidden="true">3.1.</strong> UNIX Processes</a></li><li class="chapter-item expanded "><a href="../processes/windows.html"><strong aria-hidden="true">3.2.</strong> Windows Processes</a></li><li class="chapter-item expanded "><a href="../processes/communication.html"><strong aria-hidden="true">3.3.</strong> Process Communication</a></li></ol></li><li class="chapter-item expanded "><a href="../threads.html"><strong aria-hidden="true">4.</strong> Threads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../threads/posix.html"><strong aria-hidden="true">4.1.</strong> PThreads (POSIX Threads)</a></li><li class="chapter-item expanded "><a href="../threads/user-kernel.html" class="active"><strong aria-hidden="true">4.2.</strong> User-Level and Kernel-Level Threads</a></li></ol></li><li class="chapter-item expanded "><a href="../scheduling.html"><strong aria-hidden="true">5.</strong> Scheduling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../scheduling/fcfs.html"><strong aria-hidden="true">5.1.</strong> First-Come First-Served</a></li><li class="chapter-item expanded "><a href="../scheduling/rr.html"><strong aria-hidden="true">5.2.</strong> Round-Robin</a></li><li class="chapter-item expanded "><a href="../scheduling/sjf-srt.html"><strong aria-hidden="true">5.3.</strong> Shortest Job First and Shortest Remaining Time</a></li><li class="chapter-item expanded "><a href="../scheduling/fs.html"><strong aria-hidden="true">5.4.</strong> Fair-Share Scheduling</a></li><li class="chapter-item expanded "><a href="../scheduling/priority.html"><strong aria-hidden="true">5.5.</strong> Priority Scheduling</a></li><li class="chapter-item expanded "><a href="../scheduling/mlfqs.html"><strong aria-hidden="true">5.6.</strong> Multilevel Feedback Queues (MLFQS)</a></li><li class="chapter-item expanded "><a href="../scheduling/lottery.html"><strong aria-hidden="true">5.7.</strong> Lottery Scheduling</a></li></ol></li><li class="chapter-item expanded "><a href="../synchronisation.html"><strong aria-hidden="true">6.</strong> Synchronisation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../synchronisation/mutual-exclusion.html"><strong aria-hidden="true">6.1.</strong> Attempts at Gaining Mutual Exclusion</a></li><li class="chapter-item expanded "><a href="../synchronisation/atomics.html"><strong aria-hidden="true">6.2.</strong> Atomic Operations</a></li><li class="chapter-item expanded "><a href="../synchronisation/locks.html"><strong aria-hidden="true">6.3.</strong> Locks</a></li><li class="chapter-item expanded "><a href="../synchronisation/race-conditions.html"><strong aria-hidden="true">6.4.</strong> Race Conditions and Memory Models</a></li><li class="chapter-item expanded "><a href="../synchronisation/semaphores.html"><strong aria-hidden="true">6.5.</strong> Semaphores</a></li><li class="chapter-item expanded "><a href="../synchronisation/monitors.html"><strong aria-hidden="true">6.6.</strong> Monitors</a></li><li class="chapter-item expanded "><a href="../synchronisation/deadlocks.html"><strong aria-hidden="true">6.7.</strong> Deadlocks</a></li></ol></li><li class="chapter-item expanded "><a href="../memory-management.html"><strong aria-hidden="true">7.</strong> Memory Management</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../memory-management/logical-physical.html"><strong aria-hidden="true">7.1.</strong> Logical vs. Physical Address Space</a></li><li class="chapter-item expanded "><a href="../memory-management/allocation-and-protection.html"><strong aria-hidden="true">7.2.</strong> Allocation and Protection</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../preface.html"><strong aria-hidden="true">1.</strong> Preface</a></li><li class="chapter-item expanded "><a href="../introduction.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../processes.html"><strong aria-hidden="true">3.</strong> Processes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../processes/unix.html"><strong aria-hidden="true">3.1.</strong> UNIX Processes</a></li><li class="chapter-item expanded "><a href="../processes/windows.html"><strong aria-hidden="true">3.2.</strong> Windows Processes</a></li><li class="chapter-item expanded "><a href="../processes/communication.html"><strong aria-hidden="true">3.3.</strong> Process Communication</a></li></ol></li><li class="chapter-item expanded "><a href="../threads.html"><strong aria-hidden="true">4.</strong> Threads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../threads/posix.html"><strong aria-hidden="true">4.1.</strong> PThreads (POSIX Threads)</a></li><li class="chapter-item expanded "><a href="../threads/user-kernel.html"><strong aria-hidden="true">4.2.</strong> User-Level and Kernel-Level Threads</a></li></ol></li><li class="chapter-item expanded "><a href="../scheduling.html"><strong aria-hidden="true">5.</strong> Scheduling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../scheduling/fcfs.html"><strong aria-hidden="true">5.1.</strong> First-Come First-Served</a></li><li class="chapter-item expanded "><a href="../scheduling/rr.html"><strong aria-hidden="true">5.2.</strong> Round-Robin</a></li><li class="chapter-item expanded "><a href="../scheduling/sjf-srt.html"><strong aria-hidden="true">5.3.</strong> Shortest Job First and Shortest Remaining Time</a></li><li class="chapter-item expanded "><a href="../scheduling/fs.html"><strong aria-hidden="true">5.4.</strong> Fair-Share Scheduling</a></li><li class="chapter-item expanded "><a href="../scheduling/priority.html"><strong aria-hidden="true">5.5.</strong> Priority Scheduling</a></li><li class="chapter-item expanded "><a href="../scheduling/mlfqs.html"><strong aria-hidden="true">5.6.</strong> Multilevel Feedback Queues (MLFQS)</a></li><li class="chapter-item expanded "><a href="../scheduling/lottery.html"><strong aria-hidden="true">5.7.</strong> Lottery Scheduling</a></li></ol></li><li class="chapter-item expanded "><a href="../synchronisation.html"><strong aria-hidden="true">6.</strong> Synchronisation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../synchronisation/mutual-exclusion.html"><strong aria-hidden="true">6.1.</strong> Attempts at Gaining Mutual Exclusion</a></li><li class="chapter-item expanded "><a href="../synchronisation/atomics.html"><strong aria-hidden="true">6.2.</strong> Atomic Operations</a></li><li class="chapter-item expanded "><a href="../synchronisation/locks.html"><strong aria-hidden="true">6.3.</strong> Locks</a></li><li class="chapter-item expanded "><a href="../synchronisation/race-conditions.html"><strong aria-hidden="true">6.4.</strong> Race Conditions and Memory Models</a></li><li class="chapter-item expanded "><a href="../synchronisation/semaphores.html"><strong aria-hidden="true">6.5.</strong> Semaphores</a></li><li class="chapter-item expanded "><a href="../synchronisation/monitors.html"><strong aria-hidden="true">6.6.</strong> Monitors</a></li><li class="chapter-item expanded "><a href="../synchronisation/deadlocks.html"><strong aria-hidden="true">6.7.</strong> Deadlocks</a></li></ol></li><li class="chapter-item expanded "><a href="../memory-management.html"><strong aria-hidden="true">7.</strong> Memory Management</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../memory-management/logical-physical.html" class="active"><strong aria-hidden="true">7.1.</strong> Logical vs. Physical Address Space</a></li><li class="chapter-item expanded "><a href="../memory-management/allocation-and-protection.html"><strong aria-hidden="true">7.2.</strong> Allocation and Protection</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -163,69 +163,39 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="user-level-and-kernel-level-threads"><a class="header" href="#user-level-and-kernel-level-threads">User-Level and Kernel-Level Threads</a></h1>
-<p>There exist two main ways to implement threads:</p>
+                        <h1 id="logical-vs-physical-address-space"><a class="header" href="#logical-vs-physical-address-space">Logical vs. Physical Address Space</a></h1>
+<p>Memory management binds a <strong>logical</strong> address space to a <strong>physical</strong> address space:</p>
 <ul>
-<li><strong>User-Level Threads</strong>:
-<ul>
-<li>The kernel is not aware of the threads.</li>
-<li>Each process manages its own threads</li>
+<li><strong>Logical addresses</strong> are generated by the CPU, and are the address space seen by processes.</li>
+<li><strong>Physical addresses</strong> refer to the physical system memory, and are seen by the memory unit.</li>
 </ul>
-</li>
-<li><strong>Kernel-Level Threads</strong>:
-<ul>
-<li>Managed by the kernel</li>
-</ul>
-</li>
-</ul>
-<p>There exist trade-offs of each technique, and there exists various hybrid approaches.</p>
-<h2 id="user-level-threads"><a class="header" href="#user-level-threads">User-level Threads</a></h2>
-<p>From the perspective of the Kernel, it is managing processes only. Threads are implemented by a software library, and the process maintains its own thread table for scheduling.</p>
-<p>Advantages:</p>
-<ul>
-<li>Better performance as:
-<ul>
-<li>Thread creation and termination are fast.</li>
-<li>Thread switching is fast.</li>
-<li>Thread synchronisation (e.g. via joining other threads) is fast.</li>
-<li>All these operations don't require any kernel involvement.</li>
-</ul>
-</li>
-<li>Each application can have its own scheduling algorithm (provides more flexibility).</li>
-</ul>
-<p>Disadvantages:</p>
-<ul>
-<li>Blocking system calls stops all threads in a process, which denies one of the core motivations for using threads.</li>
-<li>Non-blocking I/O can be used (e.g. <code>select</code>), which can be harder to use and understand.</li>
-<li>During a page fault, the OS blocks the entire process even though other threads may be runnable.</li>
-</ul>
-<h2 id="kernel-threads"><a class="header" href="#kernel-threads">Kernel Threads</a></h2>
-<p>Advantages:</p>
-<ul>
-<li>Blocking system calls / page faults is easy, as if one thread blocks / causes a page fault the kernel can schedule a runnable thread from the same process</li>
-</ul>
-<p>Disadvantages:</p>
-<ul>
-<li>Thread creation and termination is more expensive as they require systems calls (still much cheaper than processes), but this can be mitigated by recycling threads using thread pools.</li>
-<li>Thread synchronisation becomes more expensive as they require blocking system calls.</li>
-<li>Thread switching becomes more expensive as they require a system call (again, still much cheaper than process switches as they all exist in the same address space).</li>
-<li>Applications can't have their own scheduling algorithms.</li>
-</ul>
-<h2 id="hybrid-approaches"><a class="header" href="#hybrid-approaches">Hybrid Approaches</a></h2>
-<p>By using kernel threads and multiplexing a larger numebr of user-level threads onto some / all kernel threads. This provides the full true concurrency of kernel threads, but with the lightweight switching of user-level threads.</p>
+<p>They are the <strong>same</strong> in compile-time and load-time address-binding schemes, but are different in the execution-time address-binding scheme.</p>
+<h2 id="memory-management-unit-mmu"><a class="header" href="#memory-management-unit-mmu">Memory Management Unit (MMU)</a></h2>
+<p>To achieve this binding from logical to physical addresses with an acceptable speed (every address needs to be translated, so it has to be fast), the mapping from logical to physical is implemented in hardware. This allows user processes to deal only with logical addresses.</p>
+<p>An example MMU function would be to add a value stored in a relocation register in the MMU to every address passed to it from the CPU before being sent to memory:</p>
+<pre><code>                           Relocation
+             Logical        Register       Physical
+             Address         14000         Address
+
+   +-----+             +---------------+             +--------+
+   | CPU | ----------&gt; |      MMU      | ----------&gt; | Memory |
+   +-----+     346     +---------------+    14346    +--------+
+
+</code></pre>
+<p>Note, the relocation register holds the value of the <strong>smallest physical address</strong> allowed.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../threads/posix.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../memory-management.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../scheduling.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../memory-management/allocation-and-protection.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -237,13 +207,13 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../threads/posix.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../memory-management.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="../scheduling.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../memory-management/allocation-and-protection.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 

@@ -1,4 +1,4 @@
-# Device Driver
+# Device Driver Layer
 
 A device driver / handler handles one device type, but it may control multiple devices of the same type. They must:
 

@@ -1,4 +1,4 @@
-# Device Independent OS Software
+# Device Independent OS Software Layer
 
 The device independent layer is about providing a uniform interface for all device drivers:
 

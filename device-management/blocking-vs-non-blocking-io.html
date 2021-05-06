@@ -1,0 +1,250 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Blocking vs. Non-Blocking I/O - Operating Systems</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../preface.html"><strong aria-hidden="true">1.</strong> Preface</a></li><li class="chapter-item expanded "><a href="../introduction.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../processes.html"><strong aria-hidden="true">3.</strong> Processes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../processes/unix.html"><strong aria-hidden="true">3.1.</strong> UNIX Processes</a></li><li class="chapter-item expanded "><a href="../processes/windows.html"><strong aria-hidden="true">3.2.</strong> Windows Processes</a></li><li class="chapter-item expanded "><a href="../processes/communication.html"><strong aria-hidden="true">3.3.</strong> Process Communication</a></li></ol></li><li class="chapter-item expanded "><a href="../threads.html"><strong aria-hidden="true">4.</strong> Threads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../threads/posix.html"><strong aria-hidden="true">4.1.</strong> PThreads (POSIX Threads)</a></li><li class="chapter-item expanded "><a href="../threads/user-kernel.html"><strong aria-hidden="true">4.2.</strong> User-Level and Kernel-Level Threads</a></li></ol></li><li class="chapter-item expanded "><a href="../scheduling.html"><strong aria-hidden="true">5.</strong> Scheduling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../scheduling/fcfs.html"><strong aria-hidden="true">5.1.</strong> First-Come First-Served</a></li><li class="chapter-item expanded "><a href="../scheduling/rr.html"><strong aria-hidden="true">5.2.</strong> Round-Robin</a></li><li class="chapter-item expanded "><a href="../scheduling/sjf-srt.html"><strong aria-hidden="true">5.3.</strong> Shortest Job First and Shortest Remaining Time</a></li><li class="chapter-item expanded "><a href="../scheduling/fs.html"><strong aria-hidden="true">5.4.</strong> Fair-Share Scheduling</a></li><li class="chapter-item expanded "><a href="../scheduling/priority.html"><strong aria-hidden="true">5.5.</strong> Priority Scheduling</a></li><li class="chapter-item expanded "><a href="../scheduling/mlfqs.html"><strong aria-hidden="true">5.6.</strong> Multilevel Feedback Queues (MLFQS)</a></li><li class="chapter-item expanded "><a href="../scheduling/lottery.html"><strong aria-hidden="true">5.7.</strong> Lottery Scheduling</a></li></ol></li><li class="chapter-item expanded "><a href="../synchronisation.html"><strong aria-hidden="true">6.</strong> Synchronisation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../synchronisation/mutual-exclusion.html"><strong aria-hidden="true">6.1.</strong> Attempts at Gaining Mutual Exclusion</a></li><li class="chapter-item expanded "><a href="../synchronisation/atomics.html"><strong aria-hidden="true">6.2.</strong> Atomic Operations</a></li><li class="chapter-item expanded "><a href="../synchronisation/locks.html"><strong aria-hidden="true">6.3.</strong> Locks</a></li><li class="chapter-item expanded "><a href="../synchronisation/race-conditions.html"><strong aria-hidden="true">6.4.</strong> Race Conditions and Memory Models</a></li><li class="chapter-item expanded "><a href="../synchronisation/semaphores.html"><strong aria-hidden="true">6.5.</strong> Semaphores</a></li><li class="chapter-item expanded "><a href="../synchronisation/monitors.html"><strong aria-hidden="true">6.6.</strong> Monitors</a></li><li class="chapter-item expanded "><a href="../synchronisation/deadlocks.html"><strong aria-hidden="true">6.7.</strong> Deadlocks</a></li></ol></li><li class="chapter-item expanded "><a href="../memory-management.html"><strong aria-hidden="true">7.</strong> Memory Management</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../memory-management/logical-physical.html"><strong aria-hidden="true">7.1.</strong> Logical vs. Physical Address Space</a></li><li class="chapter-item expanded "><a href="../memory-management/allocation-and-protection.html"><strong aria-hidden="true">7.2.</strong> Allocation and Protection</a></li><li class="chapter-item expanded "><a href="../memory-management/virtual-memory.html"><strong aria-hidden="true">7.3.</strong> Virtual Memory with Paging</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../memory-management/virtual-memory/paging.html"><strong aria-hidden="true">7.3.1.</strong> Paging</a></li><li class="chapter-item expanded "><a href="../memory-management/virtual-memory/segmentation.html"><strong aria-hidden="true">7.3.2.</strong> Segmentation</a></li></ol></li><li class="chapter-item expanded "><a href="../memory-management/linux.html"><strong aria-hidden="true">7.4.</strong> Linux Virtual Memory</a></li><li class="chapter-item expanded "><a href="../memory-management/demand-paging.html"><strong aria-hidden="true">7.5.</strong> Demand Paging</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../memory-management/demand-paging/cow-mmap.html"><strong aria-hidden="true">7.5.1.</strong> Copy-on-Write (COW) and Memory Mapped Files</a></li><li class="chapter-item expanded "><a href="../memory-management/demand-paging/page-replacement.html"><strong aria-hidden="true">7.5.2.</strong> Page Replacement</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../device-management.html"><strong aria-hidden="true">8.</strong> Device Management</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../device-management/io-layering.html"><strong aria-hidden="true">8.1.</strong> I/O Layering</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../device-management/io-layering/interrupt-handler.html"><strong aria-hidden="true">8.1.1.</strong> Interrupt Handler Layer</a></li><li class="chapter-item expanded "><a href="../device-management/io-layering/device-driver.html"><strong aria-hidden="true">8.1.2.</strong> Device Driver Layer</a></li><li class="chapter-item expanded "><a href="../device-management/io-layering/device-independent-os-software.html"><strong aria-hidden="true">8.1.3.</strong> Device Independent OS Software Layer</a></li><li class="chapter-item expanded "><a href="../device-management/io-layering/user-level-io-interface.html"><strong aria-hidden="true">8.1.4.</strong> User-Level I/O Interface Layer</a></li></ol></li><li class="chapter-item expanded "><a href="../device-management/device-drivers.html"><strong aria-hidden="true">8.2.</strong> Device Drivers</a></li><li class="chapter-item expanded "><a href="../device-management/blocking-vs-non-blocking-io.html" class="active"><strong aria-hidden="true">8.3.</strong> Blocking vs. Non-Blocking I/O</a></li><li class="chapter-item expanded "><a href="../device-management/linux-io-api.html"><strong aria-hidden="true">8.4.</strong> Linux I/O API</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Operating Systems</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="blocking-vs-non-blocking-io"><a class="header" href="#blocking-vs-non-blocking-io">Blocking vs. Non-Blocking I/O</a></h1>
+<h3 id="blocking-io"><a class="header" href="#blocking-io">Blocking I/O</a></h3>
+<ul>
+<li>I/O calls only return once the operation has completed.</li>
+<li>Processes get suspended as it can only continue once the operation has returned. However from the perspective of the process, the operation will appear instantaneous.</li>
+<li>Easy to understand but leads to multi-threaded code.</li>
+</ul>
+<h3 id="non-blocking-io"><a class="header" href="#non-blocking-io">Non-blocking I/O</a></h3>
+<ul>
+<li>I/O calls return as much as is available at that moment (e.g. a <code>read</code> with 0 bytes).</li>
+<li>Can be turned on for a file descriptor using the <code>fcntl</code> system call.</li>
+<li>Provides application-level polling for I/O.</li>
+</ul>
+<h2 id="asynchronous-io"><a class="header" href="#asynchronous-io">Asynchronous I/O</a></h2>
+<p>With <strong>asychronous I/O</strong>, a process can execute in parallel with the I/O application. Upon the I/O operation's completion, the process will be notified e.g. through a signal or a callback function. Asynchronous I/O supports checking if / waiting for the I/O operation has completed, and it is very flexible and efficient.</p>
+<p>However, asychronous I/O can be harder to use as the process needs to specify which operations should be carried out, which user space buffer results need to be copied, etc (richer API). It can also be potentially less secure as it can cause.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../device-management/device-drivers.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../device-management/linux-io-api.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../device-management/device-drivers.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../device-management/linux-io-api.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

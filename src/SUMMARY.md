@@ -42,3 +42,5 @@
     - [Device Independent OS Software Layer](./device-management/io-layering/device-independent-os-software.md)
     - [User-Level I/O Interface Layer](./device-management/io-layering/user-level-io-interface.md)
   - [Device Drivers](./device-management/device-drivers.md)
+  - [Blocking vs. Non-Blocking I/O](./device-management/blocking-vs-non-blocking-io.md)
+  - [Linux I/O API](./device-management/linux-io-api.md)

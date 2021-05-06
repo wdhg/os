@@ -44,3 +44,5 @@
   - [Device Drivers](./device-management/device-drivers.md)
   - [Blocking vs. Non-Blocking I/O](./device-management/blocking-vs-non-blocking-io.md)
   - [Linux I/O API](./device-management/linux-io-api.md)
+- [Disk Management](./disk-management.md)
+  - [Disk Scheduling](./disk-management/disk-scheduling.md)

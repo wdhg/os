@@ -23,7 +23,6 @@ A page table is a translation mechanism from logical memory to physical memory.
 
     Virtual        Page         Physical
     Memory         Table         Memory
-
   *--------*       *---*       *--------*
   | Page 0 |     0 | 1 |     0 |        |
   *--------*       *---*       *--------*

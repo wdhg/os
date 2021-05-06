@@ -32,3 +32,6 @@
     - [Paging](./memory-management/virtual-memory/paging.md)
     - [Segmentation](./memory-management/virtual-memory/segmentation.md)
   - [Linux Virtual Memory](./memory-management/linux.md)
+  - [Demand Paging](./memory-management/demand-paging.md)
+    - [Copy-on-Write (COW) and Memory Mapped Files](./memory-management/demand-paging/cow-mmap.md)
+    - [Page Replacement](./memory-management/demand-paging/page-replacement.md)

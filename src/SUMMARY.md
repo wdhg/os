@@ -41,3 +41,4 @@
     - [Device Driver Layer](./device-management/io-layering/device-driver.md)
     - [Device Independent OS Software Layer](./device-management/io-layering/device-independent-os-software.md)
     - [User-Level I/O Interface Layer](./device-management/io-layering/user-level-io-interface.md)
+  - [Device Drivers](./device-management/device-drivers.md)

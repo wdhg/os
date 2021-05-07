@@ -49,7 +49,7 @@ SSDs are another widely used storage technology. They work very differently to H
 
 This diagram shows the internal organisation of an SSD disk in terms of a flash package (flash memory is used, and it is organised into multiple die). There are also blocks of memory which are split into pages, and a there is a particular connection into the package which is used to read / write data from / to the different parts of the flash package. This is what enables parallelism, as multiple parts of the SSD can be accessed in parallel (the number of concurrent read / write operations depends on the width of the bus).
 
-## SSDs vs. HDDS
+## SSDs vs. HDDs
 
 SSDs have more bandwidth (1GB/s read / write vs. 100MB/s) and smaller latencies (microseconds vs milliseconds). SSDs are also less prone to being damage from movement as they have no moving parts. However, SSDs are also typically more expensive.
 

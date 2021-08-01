@@ -108,20 +108,24 @@ An example of joining threads is:
 long a, b, c;
 
 void *work1(void *x) {
-  a = (long) x * (long) x;
+  long tmp = *((long*) x);
+  a = tmp * tmp;
   return NULL;
 }
 
 void *work2(void *y) {
-  b = (long) y * (long) y;
+  long tmp = *((long*) y);
+  b = tmp * tmp;
   return NULL;
 }
 
 int main(int argc, char *argv[]) {
   pthread_t t1, t2;
 
-  pthread_create(&t1, NULL, work1, (void*) 3);
-  pthread_create(&t2, NULL, work1, (void*) 4);
+  long x = 3, y = 4;
+
+  pthread_create(&t1, NULL, work1, (void*) &x);
+  pthread_create(&t2, NULL, work2, (void*) &y);
 
   pthread_join(t1, NULL);
   pthread_join(t2, NULL);
@@ -134,5 +138,5 @@ int main(int argc, char *argv[]) {
 
 ```
 $ gcc a.c && ./a.out
-3^2 + 4^2 = 16
+3^2 + 4^2 = 25
 ```

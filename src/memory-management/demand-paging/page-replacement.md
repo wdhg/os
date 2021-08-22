@@ -61,6 +61,9 @@ This can be shown using the replacement string `1,2,3,4,1,2,5,1,2,3,4,5` with FI
         Page Fault:    Y   Y   Y   Y           Y   Y   Y   Y   Y   Y
 
 
+
+  (#) is to help show which frame was replaced with what page
+
 ```
 
 As is shown, with 3 frames there were 9 page faults, but with 4 frames there were 10 page faults.

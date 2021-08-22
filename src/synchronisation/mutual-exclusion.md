@@ -39,7 +39,7 @@ For example, assume there are two processes A and B which have an overlapping cr
 
 char turn = 'A';
 
-void process_work_a() {
+void process_work_a(void *arg) {
   while (true) {
     while (turn != 'A') {}    // empty loop to await turn
     critical_section();       // enter critical_section
@@ -48,7 +48,7 @@ void process_work_a() {
   }
 }
 
-void process_work_b()(void *arg) {
+void process_work_b(void *arg) {
   while (true) {
     while (turn != 'B') {}
     critical_section();
@@ -96,13 +96,13 @@ void exit_critical(int thread) {
 
 // ...
 
-void process_work_0() {
+void process_work_0(void *arg) {
   enter_critical(0);
   critical_section();
   exit_critical(0);
 }
 
-void process_work_1() {
+void process_work_1(void *arg) {
   enter_critical(1);
   critical_section();
   exit_critical(1);
